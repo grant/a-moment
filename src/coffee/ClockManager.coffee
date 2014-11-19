@@ -5,7 +5,7 @@ Clock = require './Clock'
 class ClockManager
   constructor: (@numClocksWide, @numClocksTall) ->
     # Cache references to all clocks
-    clocks = loadClocks()
+    @clocks = loadClocks(numClocksWide, numClocksTall)
 
   #
   # Public Methods
@@ -18,18 +18,18 @@ class ClockManager
   #
 
   # Returns a 2D array of all clock elements
-  loadClocks = ->
+  loadClocks = (numClocksWide, numClocksTall) ->
     $allClocks = $ '.clock'
 
     # Create empty clocks 2D array
     clocks = []
-    for i in [0..@numClocksTall - 1]
+    for i in [0..numClocksTall - 1]
       clocks[i] = []
 
     # Populate clocks array
     for $clock, i in $allClocks
-      y = ~~(i / @numClocksWide)
-      x = i % @numClocksWide
+      y = ~~(i / numClocksWide)
+      x = i % numClocksWide
       clocks[y][x] = new Clock(x, y, $ $clock)
 
     return clocks

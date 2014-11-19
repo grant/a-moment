@@ -7,5 +7,4 @@ $ ->
 
   clockManager = new ClockManager(numClocksWide, numClocksTall)
 
-  clockManager.getClock 5, 2
-  # $clocks[0][0].find('.hand').css('transform', 'rotate(90deg)')
+  clockManager.getClock(0, 0).setHands(90, 100)
