@@ -27,8 +27,11 @@ class TimeClockPattern extends ClockPattern
 
     # Add the digits tot he hand positions
     positionOrigins = [[1, 1], [4, 1], [8, 1], [11, 1]]
-    for numberPattern in timeNumberPatterns
-      console.log numberPattern
+    for numberPattern, i in timeNumberPatterns
+      origin = positionOrigins[i]
+      for y in [0..numberPattern.length]
+        for x in [0..numberPattern[0].length]
+          @hands[y + origin[1]][x + origin[0]] = timeNumberPatterns[i][y][x]
 
   #
   # Private Methods
