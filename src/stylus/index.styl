@@ -1,12 +1,16 @@
 // Globals
 @import './reset'
+@import './globals'
 
 // Variables
 numClocksWide = 15
 numClocksTall = 9
-viewportAspectRatio = numClocksWide / numClocksTall
+viewport-aspect-ratio = numClocksWide / numClocksTall
 
 // Styles
+
+html
+  background-color color-bg
 
 .viewport
   position absolute
@@ -15,14 +19,25 @@ viewportAspectRatio = numClocksWide / numClocksTall
   left 0
   right 0
 
-  background blue
+  background pink
   margin auto
   width 100vw
-  height (100 / viewportAspectRatio) vw
-  max-width (viewportAspectRatio * 100) vh
+  height (100 / viewport-aspect-ratio) vw
+  max-width (viewport-aspect-ratio * 100) vh
   max-height 100vh
 
   .clock
+    position: relative
     width (100 / numClocksWide) %
     height (100 / numClocksTall) %
     display inline-block
+
+    .hand
+      width 50%
+      height 5%
+      background-color blue
+      position: absolute
+      top 50%
+      left 50%
+      // transform-origin left 50%
+      // transform rotate(90deg)
