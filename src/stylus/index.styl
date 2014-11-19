@@ -5,11 +5,11 @@
 // Variables
 numClocksWide = 15
 numClocksTall = 9
-viewport-aspect-ratio = numClocksWide / numClocksTall
+viewportAspectRatio = numClocksWide / numClocksTall
 
 // Styles
 html
-  background-color color-bg
+  background-color colorBackground
   overflow hidden
 
 .viewport
@@ -22,8 +22,8 @@ html
   background pink
   margin auto
   width 100vw
-  height (100 / viewport-aspect-ratio) vw
-  max-width (viewport-aspect-ratio * 100) vh
+  height (100 / viewportAspectRatio) vw
+  max-width (viewportAspectRatio * 100) vh
   max-height 100vh
 
   line-height 0
@@ -42,11 +42,13 @@ html
       border-radius 50%
 
     .hand
+      handWidth = 20%
       width 50%
-      height 5%
+      height handWidth
+      margin-top -(handWidth / 2)
       background-color blue
       position absolute
       top 50%
       left 50%
-      // transform-origin left 50%
+      transform-origin left 50%
       // transform rotate(90deg)
