@@ -1,5 +1,6 @@
 $ = require 'jquery'
 Clock = require './Clock'
+TimeClockPattern = require './TimeClockPattern'
 
 # The manager for the clock wall
 class ClockManager

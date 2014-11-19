@@ -16,7 +16,7 @@ class TimeClockPattern extends ClockPattern
   #
 
   # Gets the 3x7 pattern for the number
-  getNumber = (~~number) ->
+  getNumber = (number) ->
     if 0 <= number <= 9
       return NumberClockPattern[number]
     else
