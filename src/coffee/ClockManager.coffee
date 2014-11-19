@@ -1,6 +1,5 @@
 $ = require 'jquery'
 Clock = require './Clock'
-TimeClockPattern = require './TimeClockPattern'
 
 # The manager for the clock wall
 class ClockManager
@@ -12,7 +11,14 @@ class ClockManager
   # Public Methods
   #
 
+  # Gets a single clock
   getClock: (x, y) -> @clocks[y][x]
+
+  # Sets the current clock pattern
+  setPattern: (pattern) ->
+    for y in [0..@numClocksTall - 1]
+      for x in [0..@numClocksWide - 1]
+        @getClock(x, y).setHands(pattern[y][x])
 
   #
   # Private Methods

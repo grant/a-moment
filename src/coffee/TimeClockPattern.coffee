@@ -3,24 +3,32 @@ NumberClockPattern = require './NumberClockPattern'
 
 # A clock pattern that displays a time in the format HH:mm
 class TimeClockPattern extends ClockPattern
-  # Sets the time for this 24 hour clock
-  # @param hours The clock hours (24h) (0-23)
-  # @param minutes The clock minutes (0-59)
-  constructor: (@hours, @minutes) ->
+  constructor: (numClocksWide, numClocksTall) ->
+    super(numClocksWide, numClocksTall)
+    @hours = 0
+    @minutes = 0
 
   #
   # Public methods
   #
 
-  # Sets the time
+  # Sets the time for this 24 hour clock
+  # @param hours The clock hours (24h) (0-23)
+  # @param minutes The clock minutes (0-59)
   setTime: (@hours, @minutes) ->
 
   # Gets the pattern
-  getPattern: () ->
+  getHandPositions: ->
     # Get clock patterns for time digits
-    timeNumberPatterns = getTimeNumberPatterns()
+    timeNumberPatterns = getTimeNumberPatterns(@hours, @minutes)
 
-    # Create
+    # Reset the hand positions
+    @resetHandPositions()
+
+    # Add the digits tot he hand positions
+    positionOrigins = [[1, 1], [4, 1], [8, 1], [11, 1]]
+    for numberPattern in timeNumberPatterns
+      console.log numberPattern
 
   #
   # Private Methods
@@ -34,11 +42,11 @@ class TimeClockPattern extends ClockPattern
       return null
 
   # Gets the clock patterns for each digit of the time (hours and minutes)
-  getTimeNumberPatterns = () ->
-    hourTens = getNumber(~~(@hours / 10))
-    hourOnes = getNumber(@hours % 10)
-    minuteTens = getNumber(~~(@minutes / 10))
-    minuteOnes = getNumber(@minutes % 10)
+  getTimeNumberPatterns = (hours, minutes) ->
+    hourTens = getNumber(~~(hours / 10))
+    hourOnes = getNumber(hours % 10)
+    minuteTens = getNumber(~~(minutes / 10))
+    minuteOnes = getNumber(minutes % 10)
 
     # Return all four digits
     return [hourTens, hourOnes, minuteTens, minuteOnes]

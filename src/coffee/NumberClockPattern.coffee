@@ -106,6 +106,4 @@ for number, strings of NumberClockPatternDesign
         when "┘" then hands = [180, 270]
       NumberClockPattern[number][i].push(hands)
 
-console.log NumberClockPattern
-
 module.exports = NumberClockPattern

@@ -8,7 +8,9 @@ class Clock
 
   # Sets the rotation of the hands
   # Guarantees the hands will rotate using the minimum distance
-  setHands: (rotation1, rotation2) ->
+  setHands: (rotations) ->
+    rotation1 = rotations[0]
+    rotation2 = rotations[1]
     # Helper method.
     # Returns the minimum distance between two angles
     minRotDist = (rot1, rot2) ->
