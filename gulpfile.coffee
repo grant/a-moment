@@ -21,7 +21,7 @@ src =
 dest =
   js: 'bin/js/'
   css: 'bin/css/'
-  html: '/'
+  html: '.'
 
 # Tasks
 
@@ -32,18 +32,17 @@ gulp.task 'coffee', ->
     .pipe coffeelint.reporter()
 
     # Browserify
-    .coffee().on 'error', gutil.log
-    .pipe browserify
-      transform: ['coffeeify']
+    .pipe coffee().on 'error', gutil.log
+    .pipe browserify()
     .pipe uglify()
-    .pipe gulp.dest dest.coffee
+    .pipe gulp.dest dest.js
 
 gulp.task 'stylus', ->
   gulp.src src.stylus
     .pipe stylus()
     .pipe prefix()
     .pipe minify()
-    .pipe gulp.dest dest.stylus
+    .pipe gulp.dest dest.css
 
 gulp.task 'jade', ->
   gulp.src src.jade
