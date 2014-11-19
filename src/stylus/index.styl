@@ -8,9 +8,9 @@ numClocksTall = 9
 viewport-aspect-ratio = numClocksWide / numClocksTall
 
 // Styles
-
 html
   background-color color-bg
+  overflow hidden
 
 .viewport
   position absolute
@@ -26,17 +26,26 @@ html
   max-width (viewport-aspect-ratio * 100) vh
   max-height 100vh
 
+  line-height 0
+
   .clock
-    position: relative
+    position relative
     width (100 / numClocksWide) %
     height (100 / numClocksTall) %
     display inline-block
+    padding 0.1%
+
+    .face
+      width 100%
+      height 100%
+      background-color rgba(red, 0.1)
+      border-radius 50%
 
     .hand
       width 50%
       height 5%
       background-color blue
-      position: absolute
+      position absolute
       top 50%
       left 50%
       // transform-origin left 50%
