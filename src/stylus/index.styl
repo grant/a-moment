@@ -2,7 +2,9 @@
 @import './reset'
 
 // Variables
-viewportAspectRatio = 15/9
+numClocksWide = 15
+numClocksTall = 9
+viewportAspectRatio = numClocksWide / numClocksTall
 
 // Styles
 
@@ -19,3 +21,8 @@ viewportAspectRatio = 15/9
   height (100 / viewportAspectRatio) vw
   max-width (viewportAspectRatio * 100) vh
   max-height 100vh
+
+  .clock
+    width (100 / numClocksWide) %
+    height (100 / numClocksTall) %
+    display inline-block
