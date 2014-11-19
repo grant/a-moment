@@ -1,10 +1,11 @@
 $ = require 'jquery'
+Clock = require './Clock'
 
 # The manager for the clock wall
 class ClockManager
   constructor: (@numClocksWide, @numClocksTall) ->
     # Cache references to all clocks
-    $clocks = loadClocks()
+    clocks = loadClocks()
 
   #
   # Public Methods
@@ -20,17 +21,17 @@ class ClockManager
   loadClocks = ->
     $allClocks = $ '.clock'
 
-    # Create empty $clocks 2D array
-    $clocks = []
+    # Create empty clocks 2D array
+    clocks = []
     for i in [0..@numClocksTall - 1]
-      $clocks[i] = []
+      clocks[i] = []
 
-    # Populate $clocks array
+    # Populate clocks array
     for $clock, i in $allClocks
       y = ~~(i / @numClocksWide)
       x = i % @numClocksWide
-      $clocks[y][x] = $ $clock
+      clocks[y][x] = new Clock(x, y, $ $clock)
 
-    return $clocks
+    return clocks
 
 module.exports = ClockManager
