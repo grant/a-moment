@@ -33,7 +33,10 @@ gulp.task 'coffee', ->
 
     # Browserify
     .pipe coffee().on 'error', gutil.log
-    .pipe browserify()
+    .pipe browserify
+      transform: ['coffeeify']
+      extensions: ['.coffee']
+      insertGlobals: true
     .pipe uglify()
     .pipe gulp.dest dest.js
 
