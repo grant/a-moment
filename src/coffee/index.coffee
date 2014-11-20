@@ -11,4 +11,5 @@ $ ->
   clockManager.getClock(0, 0).setHands([90, 100])
 
   clockPattern = new TimeClockPattern(numClocksWide, numClocksTall)
+  clockPattern.setTime(22, 34)
   clockManager.setPattern(clockPattern.getHandPositions())

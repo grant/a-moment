@@ -29,9 +29,11 @@ class TimeClockPattern extends ClockPattern
     positionOrigins = [[1, 1], [4, 1], [8, 1], [11, 1]]
     for numberPattern, i in timeNumberPatterns
       origin = positionOrigins[i]
-      for y in [0..numberPattern.length]
-        for x in [0..numberPattern[0].length]
-          @hands[y + origin[1]][x + origin[0]] = timeNumberPatterns[i][y][x]
+      for y in [0..numberPattern.length - 1]
+        for x in [0..numberPattern[0].length - 1]
+          @hands[y + origin[1]][x + origin[0]] = numberPattern[y][x]
+
+    return @hands
 
   #
   # Private Methods
