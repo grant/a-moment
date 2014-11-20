@@ -8,3 +8,4 @@ Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4)
 - Coffeescript
 - Gulp
 - Stylus
+- Jade
