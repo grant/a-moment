@@ -1,4 +1,4 @@
-browserify = require 'gulp-browserify'
+browserify = require 'browserify'
 coffee = require 'gulp-coffee'
 coffeelint = require 'gulp-coffeelint'
 gulp = require 'gulp'
@@ -6,39 +6,45 @@ gutil = require 'gulp-util'
 jade = require 'gulp-jade'
 prefix = require 'gulp-autoprefixer'
 stylus = require 'gulp-stylus'
-uglify = require 'gulp-uglify'
 watch = require 'gulp-watch'
+transform = require 'vinyl-transform'
 minify = require 'gulp-minify-css'
+uglify = require 'gulp-uglify'
+source = require 'vinyl-source-stream'
+streamify = require 'gulp-streamify'
+
+# Helper
+browserified = transform (filename) ->
+  b = browserify
+    entries: filename
+    extensions: ['.coffee']
+  b.bundle()
 
 # Directories
 
 src =
   coffee: 'src/coffee/**/*.coffee'
-  coffee_index: 'src/coffee/index.coffee'
+  coffee_index: './src/coffee/index.coffee'
   stylus: 'src/stylus/index.styl'
   jade: 'src/jade/index.jade'
 
 dest =
   js: 'bin/js/'
+  js_index: 'index.js'
   css: 'bin/css/'
   html: '.'
 
 # Tasks
 
 gulp.task 'coffee', ->
-  gulp.src src.coffee_index
-    # lint
-    .pipe coffeelint()
-    .pipe coffeelint.reporter()
-
-    # Browserify
-    .pipe coffee().on 'error', gutil.log
-    .pipe browserify
-      transform: ['coffeeify']
-      extensions: ['.coffee']
-      insertGlobals: true
-    .pipe uglify()
-    .pipe gulp.dest dest.js
+  browserify
+    entries: src.coffee_index
+    extensions: ['.coffee']
+  .transform 'coffeeify'
+  .bundle()
+  .pipe source dest.js_index
+  .pipe streamify uglify()
+  .pipe gulp.dest dest.js
 
 gulp.task 'stylus', ->
   gulp.src src.stylus
