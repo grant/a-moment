@@ -28,6 +28,10 @@ html
 
   line-height 0
 
+  &.transition .clock .hand
+    // transform rotate(90deg)
+    transition transform 5s linear
+
   .clock
     position relative
     width (100 / numClocksWide) %
@@ -42,7 +46,7 @@ html
       border-radius 50%
 
     .hand
-      handWidth = 20%
+      handWidth = 10%
       width 50%
       height handWidth
       margin-top -(handWidth / 2)
@@ -51,5 +55,3 @@ html
       top 50%
       left 50%
       transform-origin left 50%
-      // transform rotate(90deg)
-      transition transform 1s linear

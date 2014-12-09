@@ -15,6 +15,6 @@ class ClockPattern
     for y in [0..@numClocksTall - 1]
       @hands[y] = []
       for x in [0..@numClocksWide - 1]
-        @hands[y][x] = [0, 180]
+        @hands[y][x] = [Math.random() * 360, Math.random() * 360]
 
 module.exports = ClockPattern
