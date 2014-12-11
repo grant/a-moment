@@ -13,13 +13,6 @@ uglify = require 'gulp-uglify'
 source = require 'vinyl-source-stream'
 streamify = require 'gulp-streamify'
 
-# Helper
-browserified = transform (filename) ->
-  b = browserify
-    entries: filename
-    extensions: ['.coffee']
-  b.bundle()
-
 # Directories
 
 src =
