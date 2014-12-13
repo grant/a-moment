@@ -25,7 +25,7 @@ class TimeClockPattern extends ClockPattern
     # Reset the hand positions
     @resetHandPositions()
 
-    # Add the digits tot he hand positions
+    # Add the digits to the hand positions
     positionOrigins = [[1, 1], [4, 1], [8, 1], [11, 1]]
     for numberPattern, i in timeNumberPatterns
       origin = positionOrigins[i]

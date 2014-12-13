@@ -1,3 +1,4 @@
+# A single clock element
 class Clock
   constructor: (@x, @y, @$el) ->
     $hands = $el.find '.hand'

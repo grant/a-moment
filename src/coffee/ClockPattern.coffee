@@ -1,3 +1,4 @@
+# Represents the data for a single clock pattern frame
 class ClockPattern
   # Sets the clock pattern's dimensions (width and height)
   constructor: (@numClocksWide, @numClocksTall) ->
