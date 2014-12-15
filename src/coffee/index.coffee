@@ -13,8 +13,10 @@ $ ->
   clockPattern = new ClockPattern(numClocksWide, numClocksTall)
   clockManager.setPattern(clockPattern.getHandPositions())
 
-  setTimeout ->
-    clockPattern = new TimeClockPattern(numClocksWide, numClocksTall)
-    clockPattern.setTime(10, 67)
-    clockManager.setPattern(clockPattern.getHandPositions())
-  , 10
+  # Queue patterns
+  clockManager.queuePatterns([])
+  # setTimeout ->
+  #   clockPattern = new TimeClockPattern(numClocksWide, numClocksTall)
+  #   clockPattern.setTime(10, 67)
+  #   clockManager.setPattern(clockPattern.getHandPositions())
+  # , 10
