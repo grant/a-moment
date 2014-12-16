@@ -9,12 +9,11 @@ class ClockManager
     @clocks = _loadClocks(numClocksWide, numClocksTall)
     @patternQueue = []
 
-  #
-  # Public Methods
-  #
+  # ## Public Methods
 
   # Gets a single clock
-  getClock: (x, y) -> @clocks[y][x]
+  getClock: (x, y) ->
+    @clocks[y][x]
 
   # Sets the current clock pattern
   setPattern: (pattern) ->
@@ -31,9 +30,7 @@ class ClockManager
   nextPattern: ->
     @setPattern @patternQueue.shift()
 
-  #
-  # Private Methods
-  #
+  # ## Private Methods
 
   # Returns a 2D array of all clock elements
   _loadClocks = (numClocksWide, numClocksTall) ->

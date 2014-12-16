@@ -11,3 +11,11 @@ Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4)
 - :tropical_fish: Gulp
 - :lipstick: Stylus
 - :gem: Jade
+
+## Gulp
+
+```sh
+gulp # builds and watches for changes (for development)
+gulp build # builds the js, html, and css
+gulp docs # generates the docs
+```

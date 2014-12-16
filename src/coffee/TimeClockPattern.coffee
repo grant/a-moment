@@ -8,9 +8,7 @@ class TimeClockPattern extends ClockPattern
     @hours = 0
     @minutes = 0
 
-  #
-  # Public methods
-  #
+  # ## Public methods
 
   # Sets the time for this 24 hour clock
   # @param hours The clock hours (24h) (0-23)
@@ -35,9 +33,7 @@ class TimeClockPattern extends ClockPattern
 
     return @hands
 
-  #
-  # Private Methods
-  #
+  # ## Private Methods
 
   # Gets the 3x7 pattern for the number
   getNumber = (number) ->

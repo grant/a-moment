@@ -4,14 +4,14 @@ coffeelint = require 'gulp-coffeelint'
 gulp = require 'gulp'
 gutil = require 'gulp-util'
 jade = require 'gulp-jade'
-prefix = require 'gulp-autoprefixer'
-stylus = require 'gulp-stylus'
-watch = require 'gulp-watch'
-transform = require 'vinyl-transform'
 minify = require 'gulp-minify-css'
-uglify = require 'gulp-uglify'
+prefix = require 'gulp-autoprefixer'
 source = require 'vinyl-source-stream'
 streamify = require 'gulp-streamify'
+stylus = require 'gulp-stylus'
+transform = require 'vinyl-transform'
+uglify = require 'gulp-uglify'
+watch = require 'gulp-watch'
 
 # Directories
 
@@ -27,7 +27,7 @@ dest =
   css: 'bin/css/'
   html: '.'
 
-# Tasks
+# Subtasks
 
 gulp.task 'coffee', ->
   browserify
@@ -51,9 +51,16 @@ gulp.task 'jade', ->
     .pipe jade()
     .pipe gulp.dest dest.html
 
+# Main Tasks
+
+gulp.task 'build', ->
+  gulp.task 'coffee'
+  gulp.task 'stylus'
+  gulp.task 'jade'
+
 gulp.task 'watch', ->
   gulp.watch src.coffee, ['coffee']
   gulp.watch src.stylus, ['stylus']
   gulp.watch src.jade, ['jade']
 
-gulp.task 'default', ['jade', 'stylus', 'coffee', 'watch']
+gulp.task 'default', ['build', 'watch']
