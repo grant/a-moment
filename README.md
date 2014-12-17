@@ -19,3 +19,5 @@ gulp # builds and watches for changes (for development)
 gulp build # builds the js, html, and css
 gulp docs # generates the docs
 ```
+
+**`gulp docs` requires `docco` to be globally installed**

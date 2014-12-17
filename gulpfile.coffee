@@ -6,6 +6,7 @@ gutil = require 'gulp-util'
 jade = require 'gulp-jade'
 minify = require 'gulp-minify-css'
 prefix = require 'gulp-autoprefixer'
+shell = require 'gulp-shell'
 source = require 'vinyl-source-stream'
 streamify = require 'gulp-streamify'
 stylus = require 'gulp-stylus'
@@ -16,7 +17,7 @@ watch = require 'gulp-watch'
 # Directories
 
 src =
-  coffee: 'src/coffee/**/*.coffee'
+  coffee: 'src/coffee/*.coffee'
   coffee_index: './src/coffee/index.coffee'
   stylus: 'src/stylus/index.styl'
   jade: 'src/jade/index.jade'
@@ -58,9 +59,11 @@ gulp.task 'build', ->
   gulp.task 'stylus'
   gulp.task 'jade'
 
+gulp.task 'docs', shell.task 'docco ' + src.coffee
+
 gulp.task 'watch', ->
-  gulp.watch src.coffee, ['coffee']
+  gulp.watch src.coffee, ['coffee', 'docs']
   gulp.watch src.stylus, ['stylus']
   gulp.watch src.jade, ['jade']
 
-gulp.task 'default', ['build', 'watch']
+gulp.task 'default', ['build', 'docs', 'watch']
