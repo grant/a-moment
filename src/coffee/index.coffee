@@ -2,6 +2,7 @@ $ = require 'jquery'
 ClockManager = require './ClockManager'
 
 ClockPattern = require './ClockPattern'
+ClockInterpolator = require './ClockInterpolator'
 TimeClockPattern = require './TimeClockPattern'
 
 $ ->
@@ -15,6 +16,7 @@ $ ->
 
   # Queue patterns
   clockManager.queuePatterns([])
+  console.log ClockInterpolator.getClockRotations([1, 2], [100, 200], 10)
   # setTimeout ->
   #   clockPattern = new TimeClockPattern(numClocksWide, numClocksTall)
   #   clockPattern.setTime(10, 67)

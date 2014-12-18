@@ -30,34 +30,39 @@ dest =
 
 # Subtasks
 
-gulp.task 'coffee', ->
-  browserify
-    entries: src.coffee_index
-    extensions: ['.coffee']
-  .transform 'coffeeify'
-  .bundle()
-  .pipe source dest.js_index
-  .pipe streamify uglify()
-  .pipe gulp.dest dest.js
+task =
+  coffee: ->
+    browserify
+      entries: src.coffee_index
+      extensions: ['.coffee']
+    .transform 'coffeeify'
+    .bundle()
+    .pipe source dest.js_index
+    .pipe streamify uglify()
+    .pipe gulp.dest dest.js
 
-gulp.task 'stylus', ->
-  gulp.src src.stylus
-    .pipe stylus()
-    .pipe prefix()
-    .pipe minify()
-    .pipe gulp.dest dest.css
+  stylus: ->
+    gulp.src src.stylus
+      .pipe stylus()
+      .pipe prefix()
+      .pipe minify()
+      .pipe gulp.dest dest.css
 
-gulp.task 'jade', ->
-  gulp.src src.jade
-    .pipe jade()
-    .pipe gulp.dest dest.html
+  jade: ->
+    gulp.src src.jade
+      .pipe jade()
+      .pipe gulp.dest dest.html
+
+gulp.task 'coffee', -> task.coffee()
+gulp.task 'stylus', -> task.stylus()
+gulp.task 'jade', -> task.jade()
 
 # Main Tasks
 
 gulp.task 'build', ->
-  gulp.task 'coffee'
-  gulp.task 'stylus'
-  gulp.task 'jade'
+  task.coffee()
+  task.stylus()
+  task.jade()
 
 gulp.task 'docs', shell.task 'docco ' + src.coffee
 
