@@ -16,7 +16,7 @@ $ ->
 
   # Queue patterns
   clockManager.queuePatterns([])
-  console.log ClockInterpolator.getClockRotations([1, 2], [100, 200], 10)
+  i = ClockInterpolator.getClockRotations([1, 2], [100, 200], 10)
   # setTimeout ->
   #   clockPattern = new TimeClockPattern(numClocksWide, numClocksTall)
   #   clockPattern.setTime(10, 67)
