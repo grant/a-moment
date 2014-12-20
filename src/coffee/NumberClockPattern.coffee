@@ -1,5 +1,5 @@
 # 3x7 number patterns
-NumberClockPatternDesign =
+NumberClockWallPatternDesign =
   0: [
     "┌─┐"
     "│││"
@@ -91,11 +91,11 @@ NumberClockPatternDesign =
   ]
 
 # Convert design to hand posotions
-NumberClockPattern = {}
-for number, strings of NumberClockPatternDesign
-  NumberClockPattern[number] = []
+NumberClockWallPattern = {}
+for number, strings of NumberClockWallPatternDesign
+  NumberClockWallPattern[number] = []
   for string, i in strings
-    NumberClockPattern[number][i] = []
+    NumberClockWallPattern[number][i] = []
     for char in string
       switch char
         when "│" then hands = [90, 270]
@@ -104,6 +104,6 @@ for number, strings of NumberClockPatternDesign
         when "└" then hands = [0, 270]
         when "┐" then hands = [90, 180]
         when "┘" then hands = [180, 270]
-      NumberClockPattern[number][i].push(hands)
+      NumberClockWallPattern[number][i].push(hands)
 
-module.exports = NumberClockPattern
+module.exports = NumberClockWallPattern

@@ -1,5 +1,5 @@
 # Represents the data for a single clock pattern frame
-class ClockPattern
+class ClockWallPattern
   # Sets the clock pattern's dimensions (width and height)
   constructor: (@numClocksWide, @numClocksTall) ->
     if !numClocksWide or !numClocksTall
@@ -18,4 +18,4 @@ class ClockPattern
       for x in [0..@numClocksWide - 1]
         @hands[y][x] = [Math.random() * 360, Math.random() * 360]
 
-module.exports = ClockPattern
+module.exports = ClockWallPattern

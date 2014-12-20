@@ -5,6 +5,7 @@ gulp = require 'gulp'
 gutil = require 'gulp-util'
 jade = require 'gulp-jade'
 minify = require 'gulp-minify-css'
+plumber = require 'gulp-plumber'
 prefix = require 'gulp-autoprefixer'
 shell = require 'gulp-shell'
 source = require 'vinyl-source-stream'
@@ -37,12 +38,15 @@ task =
       extensions: ['.coffee']
     .transform 'coffeeify'
     .bundle()
+    .on('error', (err) -> console.error err.toString())
+    .pipe plumber()
     .pipe source dest.js_index
     .pipe streamify uglify()
     .pipe gulp.dest dest.js
 
   stylus: ->
     gulp.src src.stylus
+      .pipe plumber()
       .pipe stylus()
       .pipe prefix()
       .pipe minify()
@@ -50,6 +54,7 @@ task =
 
   jade: ->
     gulp.src src.jade
+      .pipe plumber()
       .pipe jade()
       .pipe gulp.dest dest.html
 

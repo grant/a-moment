@@ -1,8 +1,8 @@
-ClockPattern = require './ClockPattern'
-NumberClockPattern = require './NumberClockPattern'
+ClockWallPattern = require './ClockWallPattern'
+NumberClockWallPattern = require './NumberClockWallPattern'
 
 # A clock pattern that displays a time in the format HH:mm
-class TimeClockPattern extends ClockPattern
+class TimeClockWallPattern extends ClockWallPattern
   constructor: (numClocksWide, numClocksTall) ->
     super(numClocksWide, numClocksTall)
     @hours = 0
@@ -38,7 +38,7 @@ class TimeClockPattern extends ClockPattern
   # Gets the 3x7 pattern for the number
   getNumber = (number) ->
     if 0 <= number <= 9
-      return NumberClockPattern[number]
+      return NumberClockWallPattern[number]
     else
       return null
 
@@ -52,4 +52,4 @@ class TimeClockPattern extends ClockPattern
     # Return all four digits
     return [hourTens, hourOnes, minuteTens, minuteOnes]
 
-module.exports = TimeClockPattern
+module.exports = TimeClockWallPattern

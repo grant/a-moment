@@ -1,24 +1,23 @@
 $ = require 'jquery'
-ClockManager = require './ClockManager'
+ClockWallManager = require './ClockWallManager'
 
-ClockPattern = require './ClockPattern'
+ClockWallPattern = require './ClockWallPattern'
 ClockInterpolator = require './ClockInterpolator'
-TimeClockPattern = require './TimeClockPattern'
+TimeClockWallPattern = require './TimeClockWallPattern'
 
 $ ->
   numClocksWide = 15
   numClocksTall = 9
 
   # Set default clock pattern
-  clockManager = new ClockManager(numClocksWide, numClocksTall)
-  clockPattern = new ClockPattern(numClocksWide, numClocksTall)
-  clockManager.setPattern(clockPattern.getHandPositions())
+  ClockWallManager = new ClockWallManager(numClocksWide, numClocksTall)
+  ClockWallPattern = new ClockWallPattern(numClocksWide, numClocksTall)
+  ClockWallManager.setPattern(ClockWallPattern.getHandPositions())
 
   # Queue patterns
-  clockManager.queuePatterns([])
-  i = ClockInterpolator.getClockRotations([1, 2], [100, 200], 10)
+  ClockWallManager.queuePatterns([])
   # setTimeout ->
-  #   clockPattern = new TimeClockPattern(numClocksWide, numClocksTall)
-  #   clockPattern.setTime(10, 67)
-  #   clockManager.setPattern(clockPattern.getHandPositions())
+  #   ClockWallPattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
+  #   ClockWallPattern.setTime(10, 67)
+  #   ClockWallManager.setPattern(ClockWallPattern.getHandPositions())
   # , 10

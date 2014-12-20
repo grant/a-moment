@@ -3,7 +3,7 @@ Clock = require './Clock'
 
 # The manager for the clock wall.
 # Manages the current state of the clocks and the queue of next clock patterns.
-class ClockManager
+class ClockWallManager
   constructor: (@numClocksWide, @numClocksTall) ->
     # Cache references to all clocks
     @clocks = _loadClocks(numClocksWide, numClocksTall)
@@ -49,4 +49,4 @@ class ClockManager
 
     return clocks
 
-module.exports = ClockManager
+module.exports = ClockWallManager

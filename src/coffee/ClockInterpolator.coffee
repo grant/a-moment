@@ -1,10 +1,8 @@
-interpolationSpeed = 50
-
 # A helper singleton that can generate clock rotations
 # for interpolation between two keyframe clock rotations
 ClockInterpolator =
   # Interpolates the clock rotations
-  getClockRotations: (startRotations, endRotations, numFrames) ->
+  getClockRotations: (startRotations, endRotations, numFrames, interpolationSpeed = 50) ->
     # Get the rotations to be between 0-360
     zeroToThreeSixty = (val) -> val % 360
     startRotations = startRotations.map zeroToThreeSixty
