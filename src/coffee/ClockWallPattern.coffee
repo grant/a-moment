@@ -8,14 +8,17 @@ class ClockWallPattern
     @resetHandPositions()
 
   # Getter for hand positions
-  getHandPositions: -> @hands
+  getHandPositions: -> @_hands
+
+  # Setter for hand positions
+  setHandPositions: (hands) -> @_hands = hands
 
   # Resets hand positions
   resetHandPositions: ->
-    @hands = []
+    @_hands = []
     for y in [0..@numClocksTall - 1]
-      @hands[y] = []
+      @_hands[y] = []
       for x in [0..@numClocksWide - 1]
-        @hands[y][x] = [Math.random() * 360, Math.random() * 360]
+        @_hands[y][x] = [Math.random() * 360, Math.random() * 360]
 
 module.exports = ClockWallPattern
