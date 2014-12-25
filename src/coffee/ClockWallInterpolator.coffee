@@ -30,12 +30,14 @@ ClockWallInterpolator =
 
     # Format the patterns correctly
     for i in [0...numFrames]
-      patterns[i] = []
       # Go throught the whole grid of clocks
+      pattern = patterns[i]
+      handsGrid = []
       for y in [0...height]
-        patterns[i][y] = []
+        handsGrid[y] = []
         for x in [0...width]
-          patterns[i][y][x] = clocks[y][x][i]
+          handsGrid[y][x] = clocks[y][x][i]
+      pattern.setHandPositions(handsGrid)
 
     patterns
 
