@@ -18,7 +18,7 @@ class TimeClockWallPattern extends ClockWallPattern
   # Gets the pattern
   getHandPositions: ->
     # Get clock patterns for time digits
-    timeNumberPatterns = getTimeNumberPatterns(@hours, @minutes)
+    timeNumberPatterns = _getTimeNumberPatterns(@hours, @minutes)
 
     # Reset the hand positions
     @resetHandPositions()
@@ -36,18 +36,18 @@ class TimeClockWallPattern extends ClockWallPattern
   # ## Private Methods
 
   # Gets the 3x7 pattern for the number
-  getNumber = (number) ->
+  _getNumber = (number) ->
     if 0 <= number <= 9
       return NumberClockWallPattern[number]
     else
       return null
 
   # Gets the clock patterns for each digit of the time (hours and minutes)
-  getTimeNumberPatterns = (hours, minutes) ->
-    hourTens = getNumber(~~(hours / 10))
-    hourOnes = getNumber(hours % 10)
-    minuteTens = getNumber(~~(minutes / 10))
-    minuteOnes = getNumber(minutes % 10)
+  _getTimeNumberPatterns = (hours, minutes) ->
+    hourTens = _getNumber(~~(hours / 10))
+    hourOnes = _getNumber(hours % 10)
+    minuteTens = _getNumber(~~(minutes / 10))
+    minuteOnes = _getNumber(minutes % 10)
 
     # Return all four digits
     return [hourTens, hourOnes, minuteTens, minuteOnes]
