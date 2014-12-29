@@ -39,7 +39,7 @@ NumberClockWallPatternDesign =
   4: [
     "┌┐┐"
     "│││"
-    "│└│"
+    "│`│"
     "└┐│"
     "─││"
     "─└┘"
@@ -104,6 +104,7 @@ for number, strings of NumberClockWallPatternDesign
         when "└" then hands = [0, 270]
         when "┐" then hands = [90, 180]
         when "┘" then hands = [180, 270]
+        when "`" then hands = [270, 270]
       NumberClockWallPattern[number][i].push(hands)
 
 module.exports = NumberClockWallPattern
