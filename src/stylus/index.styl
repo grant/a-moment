@@ -19,7 +19,7 @@ html
   left 0
   right 0
 
-  background pink
+  background colorBackground
   margin auto
   width 100vw
   height (100 / viewportAspectRatio) vw
@@ -39,14 +39,16 @@ html
     .face
       width 100%
       height 100%
-      background-color rgba(red, 0.1)
+      background-color colorClockFace
+      border 3px solid colorClockBorder
       border-radius 50%
+      box-shadow 0 1px 0 0 #ddd
 
     .hand
-      handWidth = 5%
-      width 50% + (handWidth / 2) - (clockPadding * 2)
+      handWidth = 6%
+      width 50% + (handWidth / 2) - (clockPadding * 2) - 2%
       height handWidth
-      background-color rgba(blue, 0.3)
+      background-color colorClockHands
       position absolute
       top 50% - (handWidth / 2)
       left 50% - (handWidth / 2)
