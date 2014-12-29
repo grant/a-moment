@@ -29,11 +29,12 @@ html
   line-height 0
 
   .clock
+    clockPadding = 0.1%
     position relative
     width (100 / numClocksWide) %
     height (100 / numClocksTall) %
     display inline-block
-    padding 0.1%
+    padding clockPadding
 
     .face
       width 100%
@@ -42,12 +43,12 @@ html
       border-radius 50%
 
     .hand
-      handWidth = 10%
-      width 50%
+      handWidth = 5%
+      width 50% + (handWidth / 2) - (clockPadding * 2)
       height handWidth
-      margin-top -(handWidth / 2)
-      background-color blue
+      background-color rgba(blue, 0.3)
       position absolute
-      top 50%
-      left 50%
-      transform-origin left 50%
+      top 50% - (handWidth / 2)
+      left 50% - (handWidth / 2)
+      transform-origin (handWidth * (3/4)) 50% 0
+      border-radius (handWidth / 2)px 0 0 (handWidth / 2)px

@@ -25,9 +25,15 @@ class ClockWallManager
 
     patterns = ClockWallInterpolator.getPatterns(pattern1, pattern2, 360, 1)
 
-    x = CommonClockWallPattern.x(numClocksWide, numClocksTall)
-    @queuePatterns(ClockWallInterpolator.getPatterns(x, x, 360, 1))
-    @queuePatterns(ClockWallInterpolator.getPatterns(x, pattern1, 360, 1))
+    # x = CommonClockWallPattern.x(numClocksWide, numClocksTall)
+    # s = CommonClockWallPattern.square(numClocksWide, numClocksTall)
+    # v = CommonClockWallPattern.vertical(numClocksWide, numClocksTall)
+    # q = CommonClockWallPattern.diagonalLeft(numClocksWide, numClocksTall)
+    # @queuePatterns(ClockWallInterpolator.getPatterns(x, s, 360, 1))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(s, q, 360, 1))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(q, v, 360, 1))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(v, x, 360, 1))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(x, pattern1, 360, 1))
     @queuePatterns(patterns)
 
     self = @
