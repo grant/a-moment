@@ -14,8 +14,12 @@ $ ->
   ClockWallPattern = new ClockWallPattern(numClocksWide, numClocksTall)
   ClockWallManager.setPattern(ClockWallPattern.getHandPositions())
 
+  clockwallpattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
+  clockwallpattern.setTime(10, 67)
+  ClockWallManager.setPattern(clockwallpattern.getHandPositions())
+
   # Queue patterns
-  ClockWallManager.queuePatterns([])
+  # ClockWallManager.queuePatterns([])
   # setTimeout ->
   #   ClockWallPattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
   #   ClockWallPattern.setTime(10, 67)

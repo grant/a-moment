@@ -1,4 +1,5 @@
 ClockWallPattern = require './ClockWallPattern'
+CommonClockWallPattern = require './CommonClockWallPattern'
 NumberClockWallPattern = require './NumberClockWallPattern'
 
 # A clock pattern that displays a time in the format HH:mm
@@ -21,7 +22,7 @@ class TimeClockWallPattern extends ClockWallPattern
     timeNumberPatterns = _getTimeNumberPatterns(@hours, @minutes)
 
     # Reset the hand positions
-    @resetHandPositions()
+    @setHandPositions(CommonClockWallPattern.horizontal(@width, @height))
 
     # Add the digits to the hand positions
     positionOrigins = [[1, 1], [4, 1], [8, 1], [11, 1]]
@@ -29,9 +30,9 @@ class TimeClockWallPattern extends ClockWallPattern
       origin = positionOrigins[i]
       for y in [0..numberPattern.length - 1]
         for x in [0..numberPattern[0].length - 1]
-          @hands[y + origin[1]][x + origin[0]] = numberPattern[y][x]
+          @_hands[y + origin[1]][x + origin[0]] = numberPattern[y][x]
 
-    return @hands
+    return @_hands
 
   # ## Private Methods
 

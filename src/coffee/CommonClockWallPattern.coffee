@@ -74,3 +74,5 @@ fillPatternGridRotation = (width, height, gridRotations) ->
       pattern[y][x] = gridRotations[y % rotations.height][x % rotations.width]
 
   pattern
+
+module.exports = CommonClockWallPattern

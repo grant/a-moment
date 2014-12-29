@@ -4,6 +4,9 @@ class ClockWallPattern
   constructor: (@numClocksWide, @numClocksTall) ->
     if !numClocksWide or !numClocksTall
       throw 'Parameters required'
+    @width = @numClocksWide
+    @height = @numClocksTall
+
     # Create the default pattern
     @resetHandPositions()
 
