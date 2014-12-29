@@ -2,19 +2,21 @@
 # Ex:
 # '-' converts to [0,180]
 getHandRotation = (char) ->
-  switch char
-    when '│' then hands = [90, 270]
-    when '─' then hands = [0, 180]
-    when '┌' then hands = [0, 90]
-    when '└' then hands = [0, 270]
-    when '┐' then hands = [90, 180]
-    when '┘' then hands = [180, 270]
-    when '`' then hands = [270, 270]
-    when '.' then hands = [90, 90]
-    when '\\' then hands = [45, 225]
-    when '/' then hands = [135, 315]
+  mapping =
+    '│': [90, 270]
+    '|': [90, 270]
+    '─': [0, 180]
+    '-': [0, 180]
+    '┌': [0, 90]
+    '└': [0, 270]
+    '┐': [90, 180]
+    '┘': [180, 270]
+    '`': [270, 270]
+    '.': [90, 90]
+    '\\': [45, 225]
+    '/': [135, 315]
 
-  hands
+  mapping[char] || throw new Error('Unknown character: ' + char)
 
 
 # Utility functions for clock hands
@@ -47,7 +49,7 @@ HandRotationUtils =
   toHandRotation: (stringPattern) ->
     # If the pattern is just a character
     if typeof stringPattern == 'string'
-      getHandRotation(stringPattern)
+      return getHandRotation(stringPattern)
 
     handRotations = []
     for string, i in stringPattern
