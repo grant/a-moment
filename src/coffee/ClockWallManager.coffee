@@ -3,6 +3,7 @@ Clock = require './Clock'
 ClockWallPattern = require './ClockWallPattern'
 ClockWallInterpolator = require './ClockWallInterpolator'
 TimeClockWallPattern = require './TimeClockWallPattern'
+CommonClockWallPattern = require './CommonClockWallPattern'
 
 
 # The manager for the clock wall.
@@ -22,9 +23,13 @@ class ClockWallManager
     timePattern.setTime(34, 12)
     pattern2 = timePattern.getHandPositions()
 
-    patterns = ClockWallInterpolator.getPatterns(pattern1, pattern2, 1000, 1)
+    patterns = ClockWallInterpolator.getPatterns(pattern1, pattern2, 360, 1)
 
+    x = CommonClockWallPattern.x(numClocksWide, numClocksTall)
+    @queuePatterns(ClockWallInterpolator.getPatterns(x, x, 360, 1))
+    @queuePatterns(ClockWallInterpolator.getPatterns(x, pattern1, 360, 1))
     @queuePatterns(patterns)
+
     self = @
     setInterval ->
       self.nextPattern()
@@ -48,6 +53,10 @@ class ClockWallManager
   # Adds an array of patterns to the next clock patterns queue.
   queuePatterns: (patterns) ->
     @patternQueue = @patternQueue.concat(patterns)
+
+  # Returns true if the pattern queue is empty
+  patternQueueIsEmpty: ->
+    !@patternQueue.length
 
   # Sets the current pattern to the next one in the queue
   nextPattern: ->

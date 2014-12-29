@@ -40,8 +40,8 @@ CommonClockWallPattern =
   # /\
   x: (width, height) ->
     xDesign = [
-      [45, 225], [135, 315]
-      [135, 315], [45, 225]
+      [[45, 225], [135, 315]]
+      [[135, 315], [45, 225]]
     ]
     fillPatternGridRotation(width, height, xDesign)
 
@@ -53,8 +53,8 @@ CommonClockWallPattern =
   # └┘
   square: (width, height) ->
     squareDesign = [
-      [0, 90], [90, 180]
-      [0, 270], [180, 270]
+      [[0, 90], [90, 180]]
+      [[0, 270], [180, 270]]
     ]
     fillPatternGridRotation(width, height, squareDesign)
 
