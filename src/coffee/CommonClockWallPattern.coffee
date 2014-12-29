@@ -1,3 +1,5 @@
+HandRotationUtils = require './HandRotationUtils'
+
 # Common clock wall patterns
 CommonClockWallPattern =
   # Horizontal lines
@@ -6,7 +8,7 @@ CommonClockWallPattern =
   # ──
   # ──
   horizontal: (width, height) ->
-    fillPatternSingleRotation(width, height, [0, 180])
+    fillPatternSingleRotation(width, height, HandRotationUtils.toHandRotation('-'))
 
   # Vertical lines
   #
@@ -14,7 +16,7 @@ CommonClockWallPattern =
   # ││
   # ││
   vertical: (width, height) ->
-    fillPatternSingleRotation(width, height, [90, 270])
+    fillPatternSingleRotation(width, height, HandRotationUtils.toHandRotation('|'))
 
   # Diagonal right lines
   #
@@ -22,7 +24,7 @@ CommonClockWallPattern =
   # \\
   # \\
   diagonalRight: (width, height) ->
-    fillPatternSingleRotation(width, height, )
+    fillPatternSingleRotation(width, height, HandRotationUtils.toHandRotation('\\'))
 
   # Diagonal left lines
   #
@@ -30,7 +32,7 @@ CommonClockWallPattern =
   # //
   # //
   diagonalLeft: (width, height) ->
-    fillPatternSingleRotation(width, height, [135, 315])
+    fillPatternSingleRotation(width, height, HandRotationUtils.toHandRotation('/'))
 
   # X lines
   # Overflow repeat
@@ -39,10 +41,10 @@ CommonClockWallPattern =
   # \/
   # /\
   x: (width, height) ->
-    xDesign = [
-      [[45, 225], [135, 315]]
-      [[135, 315], [45, 225]]
-    ]
+    xDesign = HandRotationUtils.toHandRotation([
+      '\\/'
+      '/\\'
+    ])
     fillPatternGridRotation(width, height, xDesign)
 
   # Square lines
@@ -52,11 +54,37 @@ CommonClockWallPattern =
   # ┌┐
   # └┘
   square: (width, height) ->
-    squareDesign = [
-      [[0, 90], [90, 180]]
-      [[0, 270], [180, 270]]
-    ]
+    squareDesign = HandRotationUtils.toHandRotation([
+      '┌┐'
+      '└┘'
+    ])
     fillPatternGridRotation(width, height, squareDesign)
+
+  # Zigzag horizontal
+  # Overflow repeat
+  #
+  # Example (2x2)
+  # ┌┐
+  # ┘└
+  zigzagHorizontal: (width, height) ->
+    zigzagHorizontalDesign = HandRotationUtils.toHandRotation([
+      '┌┐'
+      '┘└'
+    ])
+    fillPatternGridRotation(width, height, zigzagHorizontalDesign)
+
+  # Zigzag vertical
+  # Overflow repeat
+  #
+  # Example (2x2)
+  # ┘┌
+  # ┐└
+  zigzagVertical: (width, height) ->
+    zigzagVerticalDesign = HandRotationUtils.toHandRotation([
+      '┘┌'
+      '┐└'
+    ])
+    fillPatternGridRotation(width, height, zigzagVerticalDesign)
 
 # Fills a pattern with the specified handRotation design
 fillPatternSingleRotation = (width, height, handRotations) ->
