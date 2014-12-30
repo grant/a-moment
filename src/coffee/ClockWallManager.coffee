@@ -23,7 +23,7 @@ class ClockWallManager
     timePattern.setTime(20, 15)
     pattern2 = timePattern.getHandPositions()
 
-    speed = 3
+    speed = 10
     patterns = ClockWallInterpolator.getPatterns(pattern1, pattern2, 360/speed, speed)
 
     x = CommonClockWallPattern.x(numClocksWide, numClocksTall)
