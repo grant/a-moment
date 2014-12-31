@@ -1,3 +1,6 @@
+# Math.sign shim
+Math.sign = require 'math-sign'
+
 # A helper singleton that can generate clock rotations
 # for interpolation between two keyframe clock rotations
 ClockInterpolator =
