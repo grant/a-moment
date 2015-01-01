@@ -19,6 +19,9 @@ html, body
 body
   background themeHomeColorBackground
 
+.button
+  cursor pointer
+
 .viewport
   position absolute
   top 0
@@ -45,7 +48,7 @@ body
     .caption-area
       width 100%
       position absolute
-      top 80%
+      top 75%
 
       // Text settings
       color #929398
@@ -63,6 +66,26 @@ body
         line-height 1
         padding 5px 10px
         background-color rgba(black, 0.2)
+        margin-bottom 10px
+
+      .start.button
+        buttonSize = 80px
+        display block
+        margin 20px auto
+        width buttonSize
+        height buttonSize
+        background-color rgba(themeHomeColorClockFace, 0.05)
+        border 1px solid themeHomeColorClockBorder
+        border-radius 50%
+        font-size 15px
+        color themeHomeColorClockFace
+
+        transition background-color transitionSpeedNormal, border transitionSpeedNormal, font-size transitionSpeedNormal
+
+        &:hover
+          background-color rgba(themeHomeColorClockFace, 0.07)
+          border 3px solid themeHomeColorClockBorder
+          font-size 14px
 
   .underlay
     .clockwall
