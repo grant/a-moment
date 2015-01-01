@@ -23,136 +23,137 @@ body
 .button
   cursor pointer
 
-.viewport
+.overlay, .underlay
+  width 100%
+  height 100%
   position absolute
-  top 0
-  bottom 0
-  left 0
-  right 0
-
-  margin auto
-  width 100vw
-  height (100 / viewportAspectRatio) vw
-  max-width (viewportAspectRatio * 100) vh
-  max-height 100vh
-
-  line-height 0
   overflow hidden
 
-  .overlay, .underlay
+.overlay
+  z-index 10
+
+  .caption-area
+    width 100%
+    position absolute
+    top 75%
+
+    // Text settings
+    color #929398
+    letter-spacing 2px
+    text-transform uppercase
+    font-weight 300
+    font-family Lato
+    text-shadow 1px 1px 0 rgba(black, 0.1)
+    font-size 30px
+
+    text-align center
+
+    .caption
+      display inline-block
+      line-height 1
+      padding 5px 10px
+      background-color rgba(black, 0.2)
+      margin-bottom 10px
+
+    .start.button
+      buttonSize = 80px
+      display block
+      margin 20px auto
+      width buttonSize
+      height buttonSize
+      background-color rgba(themeHomeColorClockFace, 0.05)
+      border 1px solid themeHomeColorClockBorder
+      border-radius 50%
+      font-size 15px
+      color themeHomeColorClockFace
+      box-shadow 0 3px 1px 1px rgba(black, 0.1)
+
+      transition background-color transitionSpeedNormal, border transitionSpeedNormal, font-size transitionSpeedNormal
+
+      &:hover
+        background-color rgba(themeHomeColorClockFace, 0.07)
+        border 3px solid themeHomeColorClockBorder
+        font-size 14px
+
+.underlay
+  .clockwall
+    overflow hidden
     width 100%
     height 100%
+
+    &.view-large
+      transform scale(5)
+
+    &.view-medium
+      transform scale(2)
+
+    .clock
+      clockPadding = 10%
+      clockBorderWidth = 3%
+      handWidth = themeHomeColorClockHandWidth
+
+      position relative
+      display inline-block
+      width (100 / numClocksWide) %
+      height (100 / numClocksTall) %
+
+      svg
+        position absolute
+        width 100%
+        height 100%
+        z-index 10
+
+      &.hide
+        visibility hidden
+
+      &.middle-clock
+        transform translateY(-10px)
+
+      .shadow
+        position absolute
+        top 6%
+        left 6%
+        width 88%
+        height 90%
+        border-radius 50%
+        // TODO: Disable box-shadows when in 15x9 mode because it make the page lag
+        box-shadow 0 5px 1px 1px rgba(black, 0.2)
+
+      .border
+        fill themeHomeColorClockBorder
+
+      .face
+        fill themeHomeColorClockFace
+
+      .hand
+        stroke themeHomeColorCockHandsMain
+        stroke-width handWidth
+
+      .axle
+        width 100%
+        height 100%
+        fill themeHomeColorCockHandsMain
+        circle
+          stroke themeHomeColorCockHandsMain
+          fill themeHomeColorClockFace
+          stroke-width .5
+
+      .hole
+        fill themeHomeColorClockFace
+
+  .viewport
     position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+
+    margin auto
+    width 100vw
+    height (100 / viewportAspectRatio) vw
+    max-width (viewportAspectRatio * 100) vh
+    max-height 100vh
+
+    line-height 0
     overflow hidden
 
-  .overlay
-    z-index 10
-
-    .caption-area
-      width 100%
-      position absolute
-      top 75%
-
-      // Text settings
-      color #929398
-      letter-spacing 2px
-      text-transform uppercase
-      font-weight 300
-      font-family Lato
-      text-shadow 1px 1px 0 rgba(black, 0.1)
-      font-size 30px
-
-      text-align center
-
-      .caption
-        display inline-block
-        line-height 1
-        padding 5px 10px
-        background-color rgba(black, 0.2)
-        margin-bottom 10px
-
-      .start.button
-        buttonSize = 80px
-        display block
-        margin 20px auto
-        width buttonSize
-        height buttonSize
-        background-color rgba(themeHomeColorClockFace, 0.05)
-        border 1px solid themeHomeColorClockBorder
-        border-radius 50%
-        font-size 15px
-        color themeHomeColorClockFace
-        box-shadow 0 3px 1px 1px rgba(black, 0.1)
-
-        transition background-color transitionSpeedNormal, border transitionSpeedNormal, font-size transitionSpeedNormal
-
-        &:hover
-          background-color rgba(themeHomeColorClockFace, 0.07)
-          border 3px solid themeHomeColorClockBorder
-          font-size 14px
-
-  .underlay
-    .clockwall
-      overflow hidden
-      width 100%
-      height 100%
-
-      &.view-large
-        transform scale(5)
-
-      &.view-medium
-        transform scale(2)
-
-      .clock
-        clockPadding = 10%
-        clockBorderWidth = 3%
-        handWidth = themeHomeColorClockHandWidth
-
-        position relative
-        display inline-block
-        width (100 / numClocksWide) %
-        height (100 / numClocksTall) %
-
-        svg
-          position absolute
-          width 100%
-          height 100%
-          z-index 10
-
-        &.hide
-          visibility hidden
-
-        &.middle-clock
-          transform translateY(-10px)
-
-        .shadow
-          position absolute
-          top 6%
-          left 6%
-          width 88%
-          height 90%
-          border-radius 50%
-          // TODO: Disable box-shadows when in 15x9 mode because it make the page lag
-          box-shadow 0 5px 1px 1px rgba(black, 0.2)
-
-        .border
-          fill themeHomeColorClockBorder
-
-        .face
-          fill themeHomeColorClockFace
-
-        .hand
-          stroke themeHomeColorCockHandsMain
-          stroke-width handWidth
-
-        .axle
-          width 100%
-          height 100%
-          fill themeHomeColorCockHandsMain
-          circle
-            stroke themeHomeColorCockHandsMain
-            fill themeHomeColorClockFace
-            stroke-width .5
-
-        .hole
-          fill themeHomeColorClockFace

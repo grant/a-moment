@@ -8,12 +8,12 @@ block js
   script(src="bin/js/index.js")
 
 block content
-  .viewport
-    .overlay
-      .caption-area
-        p.caption A moment
-        button.start.button ►
-    .underlay
+  .overlay
+    .caption-area
+      p.caption A moment
+      button.start.button ►
+  .underlay
+    .viewport
       .clockwall
         - numClocksWide = 15
         - numClocksTall = 9
