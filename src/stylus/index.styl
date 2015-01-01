@@ -10,6 +10,7 @@ viewportAspectRatio = numClocksWide / numClocksTall
 // Styles
 html
   overflow hidden
+  user-select none
 
 html, body
   width 100%
@@ -38,51 +39,91 @@ body
     height 100%
     position absolute
 
-  .clockwall
-    width 100%
-    height 100%
+  .overlay
+    z-index 10
 
-    &.view-large
-      transform scale(5)
+    .caption-area
+      width 100%
+      position absolute
+      top 80%
 
-    &.view-medium
-      transform scale(2)
+      // Text settings
+      color #929398
+      letter-spacing 2px
+      text-transform uppercase
+      font-weight 300
+      font-family Lato
+      text-shadow 1px 1px 0 rgba(black, 0.1)
+      font-size 30px
 
-    .clock
-      clockPadding = 10%
-      clockBorderWidth = 3%
-      handWidth = themeHomeColorClockHandWidth
+      text-align center
 
-      position relative
-      width (100 / numClocksWide) %
-      height (100 / numClocksTall) %
-      display inline-block
+      .caption
+        display inline-block
+        line-height 1
+        padding 5px 10px
+        background-color rgba(black, 0.2)
 
-      svg
-        width 100%
-        height 100%
+  .underlay
+    .clockwall
+      width 100%
+      height 100%
 
-      &.hide
-        visibility hidden
+      &.view-large
+        transform scale(5)
 
-      .border
-        fill themeHomeColorClockBorder
+      &.view-medium
+        transform scale(2)
 
-      .face
-        fill themeHomeColorClockFace
+      .clock
+        clockPadding = 10%
+        clockBorderWidth = 3%
+        handWidth = themeHomeColorClockHandWidth
 
-      .hand
-        stroke themeHomeColorCockHandsMain
-        stroke-width handWidth
+        position relative
+        display inline-block
+        width (100 / numClocksWide) %
+        height (100 / numClocksTall) %
 
-      .axle
-        width 100%
-        height 100%
-        fill themeHomeColorCockHandsMain
-        circle
-          stroke themeHomeColorCockHandsMain
+        svg
+          position absolute
+          width 100%
+          height 100%
+          z-index 10
+
+        &.hide
+          visibility hidden
+
+        &.middle-clock
+          transform translateY(-10px)
+
+        .shadow
+          position absolute
+          top 6%
+          left 6%
+          width 88%
+          height 90%
+          border-radius 50%
+          box-shadow 0 5px 1px 1px rgba(black, 0.2)
+
+        .border
+          fill themeHomeColorClockBorder
+
+        .face
           fill themeHomeColorClockFace
-          stroke-width .5
 
-      .hole
-        fill themeHomeColorClockFace
+        .hand
+          stroke themeHomeColorCockHandsMain
+          stroke-width handWidth
+
+        .axle
+          width 100%
+          height 100%
+          fill themeHomeColorCockHandsMain
+          circle
+            stroke themeHomeColorCockHandsMain
+            fill themeHomeColorClockFace
+            stroke-width .5
+
+        .hole
+          fill themeHomeColorClockFace
