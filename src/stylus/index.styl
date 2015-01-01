@@ -49,44 +49,28 @@ body
       transform scale(2)
 
     .clock
-      clockPadding = 0.1%
+      clockPadding = 10%
+      clockBorderWidth = 3%
       handWidth = themeHomeColorClockHandWidth
 
       position relative
       width (100 / numClocksWide) %
       height (100 / numClocksTall) %
       display inline-block
-      padding clockPadding
-
-      background-color themeHomeColorClockBorder
-      border-radius 50%
 
       &.hide
         visibility hidden
 
-      .face-area
-        width 100%
-        height 100%
-        padding 3%
+      .border
+        fill themeHomeColorClockBorder
 
-        .face
-          width 100%
-          height 100%
-          background-color themeHomeColorClockFace
-          border-radius 50%
-
-      .hands
-        position absolute
-        width 100%
-        height 100%
-        top 0
-        left 0
+      .face
+        fill themeHomeColorClockFace
 
       .hand
         stroke themeHomeColorCockHandsMain
         stroke-width handWidth
 
-      // The scale of the axle width relative to the hand width
       .axle
         width 100%
         height 100%
