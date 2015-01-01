@@ -14,6 +14,16 @@ Music can be found [here](http://www.wikiloops.com/backingtrack-jam-11615.php).
 - :lipstick: Stylus
 - :gem: Jade
 
+## Install
+
+```sh
+git clone git@github.com:grant/a-moment.git
+npm install
+gulp build
+python -m SimpleHTTPServer 8000
+open http://localhost:8000
+```
+
 ## Gulp
 
 ```sh
