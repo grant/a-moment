@@ -12,3 +12,6 @@ $ ->
   $('.clock').addClass('hide')
   middleIndex = Math.ceil((numClocksWide * numClocksTall) / 2)
   $('.clock:nth-child(' + middleIndex + ')').removeClass('hide')
+
+  # Start with one clock (1x1), go to 7x7, then 15x9
+  $('.clockwall').addClass('view-large')
