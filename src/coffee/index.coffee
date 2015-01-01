@@ -7,3 +7,8 @@ $ ->
 
   # Set default clock pattern
   ClockWallManager = new ClockWallManager(numClocksWide, numClocksTall)
+
+  # Hide all clocks besides the center one
+  $('.clock').addClass('hide')
+  middleIndex = Math.ceil((numClocksWide * numClocksTall) / 2)
+  $('.clock:nth-child(' + middleIndex + ')').removeClass('hide')
