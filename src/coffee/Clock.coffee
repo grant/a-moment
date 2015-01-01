@@ -10,28 +10,24 @@ class Clock
   # Sets the rotation of the hands
   # Guarantees the hands will rotate using the minimum distance
   setHands: (rotations) ->
-    rotation1 = rotations[0]
-    rotation2 = rotations[1]
-    # Helper method.
-    # Returns the minimum distance between two angles
-    minRotDist = (rot1, rot2) ->
-      dist = rot1 - rot2
-      (dist + 180) % 360 - 180
 
-    # Calculate the distances between both options
-    # Option 1: Hand 1 rotates to rotation1, Hand 2 rotates to rotation2
-    # Option 2: Hand 1 rotates to rotation2, Hand 2 rotates to rotation1
-    option1RotDist = minRotDist(rotation1, @hand1Rotation) + minRotDist(rotation2, @hand2Rotation)
-    option2RotDist = minRotDist(rotation1, @hand2Rotation) + minRotDist(rotation2, @hand1Rotation)
-    if option1RotDist < option2RotDist
-      @hand1Rotation = rotation1
-      @hand2Rotation = rotation2
-    else
-      @hand1Rotation = rotation2
-      @hand2Rotation = rotation1
+    toRad = (deg) ->
+      deg * Math.PI / 180
+
+    handLength = 45
+    getSVGRot = (rotation) ->
+      rots =
+        x: handLength * Math.cos(toRad rotation) + 50 + '%'
+        y: handLength * Math.sin(toRad rotation) + 50 + '%'
+
+    # calculate the svg equivalent rotation
+    rotation1 = getSVGRot rotations[0]
+    rotation2 = getSVGRot rotations[1]
 
     # Set transform
-    @$hand1.css('transform', "rotate(#{@hand1Rotation}deg)")
-    @$hand2.css('transform', "rotate(#{@hand2Rotation}deg)")
+    @$hand1.attr('x2', rotation1.x)
+    @$hand1.attr('y2', rotation1.y)
+    @$hand2.attr('x2', rotation2.x)
+    @$hand2.attr('y2', rotation2.y)
 
 module.exports = Clock

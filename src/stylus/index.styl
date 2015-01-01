@@ -16,7 +16,7 @@ html, body
   height 100%
 
 body
-  background radial-gradient(ellipse at center, rgba(60, 60, 60, 1) 0%, rgba(22, 22, 22, 1) 100%)
+  background themeHomeColorBackground
 
 .viewport
   position absolute
@@ -50,6 +50,8 @@ body
 
     .clock
       clockPadding = 0.1%
+      handWidth = themeHomeColorClockHandWidth
+
       position relative
       width (100 / numClocksWide) %
       height (100 / numClocksTall) %
@@ -62,20 +64,28 @@ body
       .face
         width 100%
         height 100%
-        background-color colorClockFace
-        border 2px solid colorClockBorder
+        background-color themeHomeColorClockFace
+        border 2px solid themeHomeColorClockBorder
         border-radius 50%
-        box-shadow 0 1px 0 0 #ddd
         transition background-color transitionSpeedNormal
 
-      .hand
-        handWidth = 6%
-        width 50% + (handWidth / 2) - (clockPadding * 2) - 2%
-        height handWidth
-        background-color colorClockHands
+      .hands
         position absolute
-        top 50% - (handWidth / 2)
-        left 50% - (handWidth / 2)
-        transform-origin (handWidth * (3/4)) 50% 0
-        border-radius (handWidth / 2)px 0 0 (handWidth / 2)px
-        transition background-color transitionSpeedNormal
+        width 100%
+        height 100%
+        top 0
+        left 0
+
+      .hand
+        stroke themeHomeColorCockHandsMain
+        stroke-width handWidth
+
+      // The scale of the axle width relative to the hand width
+      .axle
+        width 100%
+        height 100%
+        fill themeHomeColorCockHandsMain
+        circle
+          stroke themeHomeColorCockHandsMain
+          fill themeHomeColorClockFace
+          stroke-width .5
