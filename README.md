@@ -6,8 +6,6 @@ A creative project by Grant Timmerman
 
 Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4) and [this video](https://www.youtube.com/watch?v=XdaKTnqotbE)
 
-Music can be found [here](http://www.wikiloops.com/backingtrack-jam-11615.php).
-
 ## Uses
 - :coffee: Coffeescript
 - :tropical_fish: Gulp
