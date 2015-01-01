@@ -20,7 +20,8 @@ watch = require 'gulp-watch'
 src =
   coffee: 'src/coffee/*.coffee'
   coffee_index: './src/coffee/index.coffee'
-  stylus: 'src/stylus/index.styl'
+  stylus_index: 'src/stylus/index.styl'
+  stylus: 'src/stylus/*.styl'
   jade: 'src/jade/index.jade'
 
 dest =
@@ -45,7 +46,7 @@ task =
     .pipe gulp.dest dest.js
 
   stylus: ->
-    gulp.src src.stylus
+    gulp.src src.stylus_index
       .pipe plumber()
       .pipe stylus()
       .pipe prefix()
