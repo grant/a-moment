@@ -9,7 +9,6 @@ viewportAspectRatio = numClocksWide / numClocksTall
 
 // Styles
 html
-  background-color colorBackground
   overflow hidden
 
 .viewport
@@ -27,29 +26,42 @@ html
 
   line-height 0
 
-  .clock
-    clockPadding = 0.1%
-    position relative
-    width (100 / numClocksWide) %
-    height (100 / numClocksTall) %
-    display inline-block
-    padding clockPadding
+  .overlay, .underlay
+    width 100%
+    height 100%
+    position absolute
 
-    .face
-      width 100%
-      height 100%
-      background-color colorClockFace
-      border 2px solid colorClockBorder
-      border-radius 50%
-      box-shadow 0 1px 0 0 #ddd
+  // .overlay
+  .underlay
+    background-color colorBackground
 
-    .hand
-      handWidth = 6%
-      width 50% + (handWidth / 2) - (clockPadding * 2) - 2%
-      height handWidth
-      background-color colorClockHands
-      position absolute
-      top 50% - (handWidth / 2)
-      left 50% - (handWidth / 2)
-      transform-origin (handWidth * (3/4)) 50% 0
-      border-radius (handWidth / 2)px 0 0 (handWidth / 2)px
+  .clockwall
+    width 100%
+    height 100%
+
+    .clock
+      clockPadding = 0.1%
+      position relative
+      width (100 / numClocksWide) %
+      height (100 / numClocksTall) %
+      display inline-block
+      padding clockPadding
+
+      .face
+        width 100%
+        height 100%
+        background-color colorClockFace
+        border 2px solid colorClockBorder
+        border-radius 50%
+        box-shadow 0 1px 0 0 #ddd
+
+      .hand
+        handWidth = 6%
+        width 50% + (handWidth / 2) - (clockPadding * 2) - 2%
+        height handWidth
+        background-color colorClockHands
+        position absolute
+        top 50% - (handWidth / 2)
+        left 50% - (handWidth / 2)
+        transform-origin (handWidth * (3/4)) 50% 0
+        border-radius (handWidth / 2)px 0 0 (handWidth / 2)px

@@ -8,8 +8,12 @@ block js
 
 block content
   .viewport
-    - for(var i = 0; i < 15 * 9; ++i)
-      .clock
-        .face
-        .hand
-        .hand
+    .overlay
+      .caption-area
+    .underlay
+      .clockwall
+        - for(var i = 0; i < 15 * 9; ++i)
+          .clock
+            .face
+            .hand
+            .hand
