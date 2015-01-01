@@ -1,5 +1,5 @@
 {
-  "name": "clock-wall",
+  "name": "a-moment",
   "version": "0.0.0",
   "description": "A wall of clocks",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/grant/clock-wall.git"
+    "url": "git://github.com/grant/a-moment.git"
   },
   "keywords": [
     "clock",
@@ -17,9 +17,9 @@
   "author": "Grant Timmerman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/grant/clock-wall/issues"
+    "url": "https://github.com/grant/a-moment/issues"
   },
-  "homepage": "https://github.com/grant/clock-wall",
+  "homepage": "https://github.com/grant/a-moment",
   "devDependencies": {
     "browserify": "^8.0.1",
     "coffee-script": "^1.8.0",

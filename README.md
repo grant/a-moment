@@ -1,6 +1,6 @@
-# Clock Wall
+# A Moment
 
-A wall of animating clocks
+A creative project by Grant Timmerman
 
 [Insert picture here]
 
@@ -19,7 +19,7 @@ Music can be found [here](http://www.wikiloops.com/backingtrack-jam-11615.php).
 ```sh
 gulp # builds and watches for changes (for development)
 gulp build # builds the js, html, and css
-gulp docs # generates the docs
+gulp docs # generates the documentation
 ```
 
 **`gulp docs` requires `docco` to be globally installed**
