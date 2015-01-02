@@ -21,11 +21,11 @@ block content
           .clock
             .shadow
             svg
-              circle.border(cx='50%', cy='50%', r='45%')
-              circle.face(cx='50%', cy='50%', r='40%')
-              line.hand(x1='50%', y1='50%', x2='100%', y2='100%')
-              line.hand(x1='50%', y1='50%', x2='0%', y2='0%')
-              circle.axle(cx='50%', cy='50%', r='4%')
+              circle.border
+              circle.face
+              line.hand
+              line.hand
+              circle.axle
               - if (i == Math.floor(numClocksWide * numClocksTall / 2))
                 g.second.hand
                   line

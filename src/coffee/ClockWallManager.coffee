@@ -1,4 +1,5 @@
 $ = require 'jquery'
+AnalogClock = require './AnalogClock'
 Clock = require './Clock'
 ClockWallPattern = require './ClockWallPattern'
 ClockWallInterpolator = require './ClockWallInterpolator'
@@ -92,7 +93,10 @@ class ClockWallManager
     for clock, i in $allClocks
       y = ~~(i / numClocksWide)
       x = i % numClocksWide
-      clocks[y][x] = new Clock(x, y, $ clock)
+      if x == Math.floor(@numClocksWide / 2) and y == Math.floor(@numClocksTall / 2)
+        clocks[y][x] = new AnalogClock($ clock)
+      else
+        clocks[y][x] = new Clock($ clock)
 
     return clocks
 

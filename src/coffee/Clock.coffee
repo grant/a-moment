@@ -1,11 +1,40 @@
 # A single clock element
 class Clock
-  constructor: (@x, @y, @$el) ->
+  constructor: (@$el) ->
     $hands = $el.find '.hand'
-    @$hand1 = $hands.eq(0)
-    @$hand2 = $hands.eq(1)
-    @hand1Rotation = 0
-    @hand2Rotation = 0
+    @$minuteHand = $hands.eq(0)
+    @$hourHand = $hands.eq(1)
+
+    # ## Set default DOM attrs
+    # ### Hands
+    @$minuteHand.attr
+      x1: '50%'
+      y1: '50%'
+    @$hourHand.attr
+      x1: '50%'
+      y1: '50%'
+    @setHands([0, 0])
+
+    # ### Axle
+    $axle = $el.find '.axle'
+    $axle.attr
+      cx: '50%'
+      cy: '50%'
+      r: '4%'
+
+    # ### Border
+    $border = $el.find '.border'
+    $border.attr
+      cx: '50%'
+      cy: '50%'
+      r: '45%'
+
+    # ### Face
+    $face = $el.find '.face'
+    $face.attr
+      cx: '50%'
+      cy: '50%'
+      r: '40%'
 
   # Sets the rotation of the hands
   # Guarantees the hands will rotate using the minimum distance
@@ -21,13 +50,13 @@ class Clock
         y: handLength * Math.sin(toRad rotation) + 50 + '%'
 
     # calculate the svg equivalent rotation
-    rotation1 = getSVGRot rotations[0]
-    rotation2 = getSVGRot rotations[1]
+    minuteHandRotation = getSVGRot rotations[0]
+    hourHandRotation = getSVGRot rotations[1]
 
     # Set transform
-    @$hand1.attr('x2', rotation1.x)
-    @$hand1.attr('y2', rotation1.y)
-    @$hand2.attr('x2', rotation2.x)
-    @$hand2.attr('y2', rotation2.y)
+    @$minuteHand.attr('x2', minuteHandRotation.x)
+    @$minuteHand.attr('y2', minuteHandRotation.y)
+    @$hourHand.attr('x2', hourHandRotation.x)
+    @$hourHand.attr('y2', hourHandRotation.y)
 
 module.exports = Clock
