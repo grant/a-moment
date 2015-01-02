@@ -23,6 +23,7 @@ $ ->
     $('.clockwall').addClass('view-large')
 
     $('.start.button').click ->
+      $('.start.button').addClass 'hide'
       start()
 
   setup()

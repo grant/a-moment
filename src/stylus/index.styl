@@ -80,6 +80,21 @@ body
         border 7px solid themeHomeColorClockBorder
         font-size 7px
 
+      @keyframes scale-up-then-down
+        0%
+          transform scale(1)
+          visibility visible
+        25%
+          transform scale(1.2)
+        100%
+          transform scale(0)
+      &.hide
+        animation-name scale-up-then-down
+        animation-duration 1s
+        animation-iteration-count 1
+        animation-timing-function bezier-curve(.15,.39,.61,1)
+        visibility hidden
+
 .underlay
   .clockwall
     overflow hidden
