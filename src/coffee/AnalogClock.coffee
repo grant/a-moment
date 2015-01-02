@@ -8,7 +8,7 @@ SECOND_HAND_LENGTH =
   FRONT: 35
   BACK: 10
 
-SECOND_HAND_DOT_SIZE = 1.2
+SECOND_HAND_DOT_SIZE = 1.5
 
 # An analog clock that shows the time using the second, minute, and hour hand
 class AnalogClock extends Clock
@@ -20,8 +20,8 @@ class AnalogClock extends Clock
 
     # ## Set default DOM attrs
     # ### Dots at the ends of the second hand
-    @$frontDot.attr 'r', SECOND_HAND_DOT_SIZE
-    @$backDot.attr 'r', SECOND_HAND_DOT_SIZE
+    @$frontDot.attr 'r', SECOND_HAND_DOT_SIZE + '%'
+    @$backDot.attr 'r', SECOND_HAND_DOT_SIZE + '%'
 
     super(@$el)
 
