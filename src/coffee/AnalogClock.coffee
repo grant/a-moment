@@ -80,8 +80,9 @@ class AnalogClock extends Clock
         cy: secondHandRotation.back.y
 
   # Updates the hands with the current time
-  updateHands: ->
-    time = new Date
+  # @param date An optional date to update to
+  updateHands: (date) ->
+    time = date or new Date
     hours = time.getHours()
     minutes = time.getMinutes()
     seconds = time.getSeconds()
