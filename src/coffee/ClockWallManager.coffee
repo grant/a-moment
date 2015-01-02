@@ -1,4 +1,5 @@
 $ = require 'jquery'
+raf = require 'raf'
 AnalogClock = require './AnalogClock'
 Clock = require './Clock'
 ClockWallPattern = require './ClockWallPattern'
@@ -6,6 +7,8 @@ ClockWallInterpolator = require './ClockWallInterpolator'
 TimeClockWallPattern = require './TimeClockWallPattern'
 CommonClockWallPattern = require './CommonClockWallPattern'
 
+# Constants
+ANALOG_CLOCK_DATE_OFFSET_ACCELERATION = 1.03
 
 # The manager for the clock wall.
 # Manages the current state of the clocks and the queue of next clock patterns.
@@ -17,10 +20,27 @@ class ClockWallManager
     @clocks = _loadClocks(numClocksWide, numClocksTall)
     @analogClock = @clocks[Math.floor(numClocksTall / 2)][Math.floor(numClocksWide / 2)]
 
+    # Start the analog clock
     analogClock = @analogClock
-    setInterval ->
-      analogClock.updateHands()
-    , 30
+    dateOffset = 0
+    dateOffsetSpeed = 2
+
+    # Setup raf (60 fps)
+    tick = ->
+      raf tick
+
+      date = new Date
+      if self.animationStarted
+        dateOffset += dateOffsetSpeed
+        dateOffsetSpeed *= ANALOG_CLOCK_DATE_OFFSET_ACCELERATION
+        dateOffsetSpeed = dateOffsetSpeed
+
+      console.log dateOffset
+
+      date.setTime date.getTime() + dateOffset
+      analogClock.updateHands(date)
+
+    raf tick
 
     # # Load default clock pattern
     # @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
@@ -60,6 +80,10 @@ class ClockWallManager
 
 
   # ## Public Methods
+
+  # Starts the main animation
+  startAnimation: ->
+    @animationStarted = true
 
   # Gets a single clock
   getClock: (x, y) ->

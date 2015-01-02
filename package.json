@@ -43,6 +43,7 @@
     "vinyl-transform": "^1.0.0"
   },
   "dependencies": {
-    "math-sign": "^1.0.0"
+    "math-sign": "^1.0.0",
+    "raf": "^2.0.4"
   }
 }
