@@ -93,7 +93,7 @@ class ClockWallManager
     for clock, i in $allClocks
       y = ~~(i / numClocksWide)
       x = i % numClocksWide
-      if x == Math.floor(@numClocksWide / 2) and y == Math.floor(@numClocksTall / 2)
+      if x == Math.floor(numClocksWide / 2) and y == Math.floor(numClocksTall / 2)
         clocks[y][x] = new AnalogClock($ clock)
       else
         clocks[y][x] = new Clock($ clock)

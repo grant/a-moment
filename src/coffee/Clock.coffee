@@ -7,10 +7,10 @@ CLOCK_MARGIN = 5
 
 # A single clock element
 class Clock
+
   constructor: (@$el) ->
-    $hands = $el.find '.hand'
-    @$minuteHand = $hands.eq(0)
-    @$hourHand = $hands.eq(1)
+    @$hourHand = $el.find '.hour.hand'
+    @$minuteHand = $el.find '.minute.hand'
 
     # ## Set default DOM attrs
     # ### Hands
@@ -20,7 +20,7 @@ class Clock
     @$hourHand.attr
       x1: '50%'
       y1: '50%'
-    @setHands([0, 0])
+    @setHands [0, 0]
 
     # ### Axle
     $axle = $el.find '.axle'
@@ -44,7 +44,9 @@ class Clock
       r: (50 - CLOCK_MARGIN - BORDER_WIDTH) + '%'
 
   # Sets the rotation of the hands
-  # Guarantees the hands will rotate using the minimum distance
+  #
+  # Ex.
+  # rotations = [90, 180]
   setHands: (rotations) ->
 
     toRad = (deg) ->
@@ -56,13 +58,14 @@ class Clock
         y: HAND_LENGTH * Math.sin(toRad rotation) + 50 + '%'
 
     # calculate the svg equivalent rotation
-    minuteHandRotation = getSVGRot rotations[0]
-    hourHandRotation = getSVGRot rotations[1]
+    hourHandRotation = getSVGRot rotations[0]
+    minuteHandRotation = getSVGRot rotations[1]
 
     # Set transform
-    @$minuteHand.attr('x2', minuteHandRotation.x)
-    @$minuteHand.attr('y2', minuteHandRotation.y)
     @$hourHand.attr('x2', hourHandRotation.x)
     @$hourHand.attr('y2', hourHandRotation.y)
+    @$minuteHand.attr('x2', minuteHandRotation.x)
+    @$minuteHand.attr('y2', minuteHandRotation.y)
 
 module.exports = Clock
+module.exports.HAND_LENGTH = HAND_LENGTH

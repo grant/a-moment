@@ -23,12 +23,12 @@ block content
             svg
               circle.border
               circle.face
-              line.hand
-              line.hand
+              line.hour.hand
+              line.minute.hand
               circle.axle
               - if (i == Math.floor(numClocksWide * numClocksTall / 2))
                 g.second.hand
-                  line
-                  circle.start
-                  circle.end
+                  line.line
+                  circle.front.dot
+                  circle.back.dot
                 circle.hole(cx='50%', cy='50%', r='3.3%')

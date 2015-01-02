@@ -91,6 +91,7 @@ body
       clockPadding = 10%
       clockBorderWidth = 3%
       handWidth = themeHomeColorClockHandWidth
+      secondHandWidth = themeHomeColorClockHandWidth / 3
 
       position relative
       display inline-block
@@ -128,6 +129,10 @@ body
       .hand
         stroke themeHomeColorCockHandsMain
         stroke-width handWidth
+
+        &.second
+          stroke themeHomeColorClockBorder
+          stroke-width secondHandWidth
 
       .axle
         width 100%
