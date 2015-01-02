@@ -68,4 +68,3 @@ class Clock
     @$minuteHand.attr('y2', minuteHandRotation.y)
 
 module.exports = Clock
-module.exports.HAND_LENGTH = HAND_LENGTH

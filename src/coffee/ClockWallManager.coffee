@@ -11,45 +11,52 @@ CommonClockWallPattern = require './CommonClockWallPattern'
 # Manages the current state of the clocks and the queue of next clock patterns.
 class ClockWallManager
   constructor: (@numClocksWide, @numClocksTall) ->
+    self = @
+
     # Cache references to all clocks
     @clocks = _loadClocks(numClocksWide, numClocksTall)
+    @analogClock = @clocks[Math.floor(numClocksTall / 2)][Math.floor(numClocksWide / 2)]
 
-    # Load default clock pattern
-    @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
-    @patternQueue = []
-
-    timePattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
-    timePattern.setTime(10, 67)
-    pattern1 = timePattern.getHandPositions()
-    timePattern.setTime(20, 15)
-    pattern2 = timePattern.getHandPositions()
-
-    speed = 10
-    patterns = ClockWallInterpolator.getPatterns(pattern1, pattern2, 360/speed, speed)
-
-    x = CommonClockWallPattern.x(numClocksWide, numClocksTall)
-    s = CommonClockWallPattern.square(numClocksWide, numClocksTall)
-    v = CommonClockWallPattern.vertical(numClocksWide, numClocksTall)
-    q = CommonClockWallPattern.diagonalLeft(numClocksWide, numClocksTall)
-    z1 = CommonClockWallPattern.zigzagHorizontal(numClocksWide, numClocksTall)
-    z2 = CommonClockWallPattern.zigzagVertical(numClocksWide, numClocksTall)
-    spiral = CommonClockWallPattern.spiral(numClocksWide, numClocksTall)
-    spiral2 = CommonClockWallPattern.spiral(numClocksWide, numClocksTall, 'bottom-right', 'ccw')
-    @queuePatterns(ClockWallInterpolator.getPatterns(x, spiral, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(spiral, spiral2, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(spiral2, z1, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(z1, z2, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(z2, s, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(s, q, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(q, v, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(v, x, 360/speed, speed))
-    @queuePatterns(ClockWallInterpolator.getPatterns(x, pattern1, 360/speed, speed))
-    @queuePatterns(patterns)
-
-    self = @
+    analogClock = @analogClock
     setInterval ->
-      self.nextPattern()
+      analogClock.updateHands()
     , 30
+
+    # # Load default clock pattern
+    # @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
+    # @patternQueue = []
+
+    # timePattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
+    # timePattern.setTime(10, 67)
+    # pattern1 = timePattern.getHandPositions()
+    # timePattern.setTime(20, 15)
+    # pattern2 = timePattern.getHandPositions()
+
+    # speed = 10
+    # patterns = ClockWallInterpolator.getPatterns(pattern1, pattern2, 360/speed, speed)
+
+    # x = CommonClockWallPattern.x(numClocksWide, numClocksTall)
+    # s = CommonClockWallPattern.square(numClocksWide, numClocksTall)
+    # v = CommonClockWallPattern.vertical(numClocksWide, numClocksTall)
+    # q = CommonClockWallPattern.diagonalLeft(numClocksWide, numClocksTall)
+    # z1 = CommonClockWallPattern.zigzagHorizontal(numClocksWide, numClocksTall)
+    # z2 = CommonClockWallPattern.zigzagVertical(numClocksWide, numClocksTall)
+    # spiral = CommonClockWallPattern.spiral(numClocksWide, numClocksTall)
+    # spiral2 = CommonClockWallPattern.spiral(numClocksWide, numClocksTall, 'bottom-right', 'ccw')
+    # @queuePatterns(ClockWallInterpolator.getPatterns(x, spiral, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(spiral, spiral2, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(spiral2, z1, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(z1, z2, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(z2, s, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(s, q, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(q, v, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(v, x, 360/speed, speed))
+    # @queuePatterns(ClockWallInterpolator.getPatterns(x, pattern1, 360/speed, speed))
+    # @queuePatterns(patterns)
+
+    # setInterval ->
+    #   self.nextPattern()
+    # , 30
 
 
   # ## Public Methods
