@@ -1,3 +1,10 @@
+# Constants
+# (percentage of whole clock)
+HAND_LENGTH = 45
+AXLE_LENGTH = 4
+BORDER_WIDTH = 5
+CLOCK_MARGIN = 5
+
 # A single clock element
 class Clock
   constructor: (@$el) ->
@@ -20,21 +27,21 @@ class Clock
     $axle.attr
       cx: '50%'
       cy: '50%'
-      r: '4%'
+      r: AXLE_LENGTH + '%'
 
     # ### Border
     $border = $el.find '.border'
     $border.attr
       cx: '50%'
       cy: '50%'
-      r: '45%'
+      r: (50 - CLOCK_MARGIN) + '%'
 
     # ### Face
     $face = $el.find '.face'
     $face.attr
       cx: '50%'
       cy: '50%'
-      r: '40%'
+      r: (50 - CLOCK_MARGIN - BORDER_WIDTH) + '%'
 
   # Sets the rotation of the hands
   # Guarantees the hands will rotate using the minimum distance
@@ -43,11 +50,10 @@ class Clock
     toRad = (deg) ->
       deg * Math.PI / 180
 
-    handLength = 45
     getSVGRot = (rotation) ->
       rots =
-        x: handLength * Math.cos(toRad rotation) + 50 + '%'
-        y: handLength * Math.sin(toRad rotation) + 50 + '%'
+        x: HAND_LENGTH * Math.cos(toRad rotation) + 50 + '%'
+        y: HAND_LENGTH * Math.sin(toRad rotation) + 50 + '%'
 
     # calculate the svg equivalent rotation
     minuteHandRotation = getSVGRot rotations[0]
