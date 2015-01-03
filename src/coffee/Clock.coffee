@@ -43,6 +43,9 @@ class Clock
       cy: '50%'
       r: (50 - CLOCK_MARGIN - BORDER_WIDTH) + '%'
 
+  # Gets the clock element
+  getElement: -> @$el
+
   # Sets the rotation of the hands
   #
   # Ex.

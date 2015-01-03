@@ -1,4 +1,5 @@
 $ = require 'jquery'
+curve = require 'timing-function'
 raf = require 'raf'
 AnalogClock = require './AnalogClock'
 Clock = require './Clock'
@@ -9,6 +10,8 @@ CommonClockWallPattern = require './CommonClockWallPattern'
 
 # Constants
 ANALOG_CLOCK_DATE_OFFSET_ACCELERATION = 1.03
+ANALOG_CLOCK_TRANSLATE_UP = -10 # px
+EASE_IN_OUT_BEZIER = curve.get 0.42, 0, 0.58, 1
 
 # The manager for the clock wall.
 # Manages the current state of the clocks and the queue of next clock patterns.
@@ -22,6 +25,7 @@ class ClockWallManager
 
     # Start the analog clock
     analogClock = @analogClock
+    analogClock.getElement().css('transform', 'translateY(' + ANALOG_CLOCK_TRANSLATE_UP + 'px)')
     dateOffset = 0
     dateOffsetSpeed = 2
 
@@ -35,9 +39,7 @@ class ClockWallManager
         dateOffsetSpeed *= ANALOG_CLOCK_DATE_OFFSET_ACCELERATION
         dateOffsetSpeed = dateOffsetSpeed
 
-      console.log dateOffset
-
-      date.setTime date.getTime() + dateOffset
+      date.setTime date.getTime() - dateOffset
       analogClock.updateHands(date)
 
     raf tick
@@ -85,6 +87,63 @@ class ClockWallManager
   startAnimation: ->
     @animationStarted = true
 
+    # Move the middle clock back to place
+    setTimeout =>
+      # Move middle clock
+      startTime = new Date().getTime()
+      duration = 500
+      $('.middle-clock').animate
+        opacity: 1
+      ,
+        duration: duration
+        step: ->
+          timeDifference = Math.min (new Date().getTime() - startTime), duration
+          timeRatio = timeDifference / duration
+          easeRatio = EASE_IN_OUT_BEZIER timeRatio
+          y = ANALOG_CLOCK_TRANSLATE_UP + (-ANALOG_CLOCK_TRANSLATE_UP * easeRatio)
+          $(this).css('transform', 'translateY(' + y + 'px)')
+
+    , 4000
+
+    # Bring in 7x7 clocks
+    fadeInWidth = 7
+    fadeInHeight = 7
+    startX = (@numClocksWide - fadeInWidth) / 2
+    startY = (@numClocksTall - fadeInHeight) / 2
+    endX = startX + fadeInWidth
+    endY = startY + fadeInHeight
+    duration = 1500
+    setTimeout =>
+      # Go through all the clocks and fade them in
+      startTime = new Date().getTime()
+      for y in [startY...endY]
+        for x in [startX...endX]
+          if !(x == Math.floor(@numClocksWide / 2) and y == Math.floor(@numClocksTall / 2))
+            $clock = @clocks[y][x].getElement()
+            $clock.removeClass 'hide'
+            xOffset = -(Math.floor(fadeInWidth / 2) - x + startX) * 100
+            yOffset = -(Math.floor(fadeInHeight / 2) - y + startY) * 100
+            $clock.css
+              transform: 'translate(' + xOffset + 'px, ' + yOffset + 'px)'
+            # Closure to wrap offset variables
+            (($clock, xOffset, yOffset) ->
+              $clock.animate
+                opacity: 1
+              ,
+                duration: duration
+                step: ->
+                  timeDifference = Math.min (new Date().getTime() - startTime), duration
+                  timeRatio = timeDifference / duration
+                  easeRatio = EASE_IN_OUT_BEZIER timeRatio
+                  inverseTimeRatio = 1 - easeRatio
+                  newXOffset = xOffset * inverseTimeRatio
+                  newYOffset = yOffset * inverseTimeRatio
+                  $clock.css
+                    transform: 'translate(' + newXOffset + 'px, ' + newYOffset + 'px)'
+            )($clock, xOffset, yOffset)
+    , 6000
+
+
   # Gets a single clock
   getClock: (x, y) ->
     @clocks[y][x]
@@ -93,8 +152,8 @@ class ClockWallManager
   setPattern: (pattern) ->
     if pattern
       handRotations = pattern.getHandPositions()
-      for y in [0..@numClocksTall - 1]
-        for x in [0..@numClocksWide - 1]
+      for y in [0...@numClocksTall]
+        for x in [0...@numClocksWide]
           @getClock(x, y).setHands(handRotations[y][x])
 
   # Adds an array of patterns to the next clock patterns queue.

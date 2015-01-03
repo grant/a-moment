@@ -6,11 +6,28 @@ $ ->
   numClocksTall = 9
 
   # Set default clock pattern
-  clockwallmanager = new ClockWallManager(numClocksWide, numClocksTall)
+  clockWallManager = new ClockWallManager(numClocksWide, numClocksTall)
+
+  $clockWall = $('.clockwall')
 
   # Start animation
   start = ->
-    clockwallmanager.startAnimation()
+    clockWallManager.startAnimation()
+    timeStart = undefined
+    startScale = 5
+    endScale = 1.3
+    duration = 1000
+    $clockWall.delay(6000).animate { opacity: 1 },
+      duration: duration
+      step: (now, fx) ->
+        if !timeStart
+          timeStart = new Date().getTime()
+        timeDifference = Math.min (new Date().getTime() - timeStart), duration
+        timeRatio = timeDifference / duration
+        scale = startScale - (startScale - endScale) * timeRatio
+        $(this).css('transform', 'scale(' + scale + ')')
+      complete: ->
+        $(this).css('transform', 'scale(' + endScale + ')')
 
   # Setup start configuration
   setup = ->
@@ -20,7 +37,7 @@ $ ->
     $('.clock:nth-child(' + middleIndex + ')').addClass('middle-clock').removeClass('hide')
 
     # Start with one clock (1x1), go to 7x7, then 15x9
-    $('.clockwall').addClass('view-large')
+    $clockWall.css('transform', 'scale(5)')
 
     $('.start.button').click ->
       $('.start.button').addClass 'hide'

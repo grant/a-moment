@@ -92,6 +92,7 @@ body
         animation-name scale-up-then-down
         animation-duration 1s
         animation-iteration-count 1
+        // ease-out
         animation-timing-function bezier-curve(.15,.39,.61,1)
         visibility hidden
 
@@ -100,12 +101,6 @@ body
     overflow hidden
     width 100%
     height 100%
-
-    &.view-large
-      transform scale(5)
-
-    &.view-medium
-      transform scale(2)
 
     .clock
       clockPadding = 10%
@@ -125,10 +120,7 @@ body
         z-index 10
 
       &.hide
-        visibility hidden
-
-      &.middle-clock
-        transform translateY(-10px)
+        opacity 0
 
       .shadow
         position absolute
@@ -183,5 +175,5 @@ body
     max-height 100vh
 
     line-height 0
-    overflow hidden
+    // overflow hidden
 
