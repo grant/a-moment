@@ -12,12 +12,23 @@ CommonClockWallPattern = require './CommonClockWallPattern'
 ANALOG_CLOCK_DATE_OFFSET_ACCELERATION = 1.03
 ANALOG_CLOCK_TRANSLATE_UP = -10 # px
 EASE_IN_OUT_BEZIER = curve.get 0.42, 0, 0.58, 1
+MODE =
+  HOME: 'home'
+  HOME_TO_MEDIUM_VIEW: 'home_to_medium_view'
+  # MEDIUM_VIEW = 7x7
+  MEDIUM_VIEW: 'medium_view'
+  MEDIUM_VIEW_TO_LARGE_VIEW: 'medium_view_to_large_view'
+  # LARGE_VIEW = 15x9
+  LARGE_VIEW: 'large_view'
+  LARGE_VIEW_TO_END: 'large_view_to_end'
+  END: 'end'
 
 # The manager for the clock wall.
 # Manages the current state of the clocks and the queue of next clock patterns.
 class ClockWallManager
   constructor: (@numClocksWide, @numClocksTall) ->
     self = @
+    @mode = MODE.HOME
 
     # Cache references to all clocks
     @clocks = _loadClocks(numClocksWide, numClocksTall)
@@ -30,11 +41,11 @@ class ClockWallManager
     dateOffsetSpeed = 2
 
     # Setup raf (60 fps)
-    tick = ->
+    tick = =>
       raf tick
 
       date = new Date
-      if self.animationStarted
+      if @mode == MODE.HOME_TO_MEDIUM_VIEW
         dateOffset += dateOffsetSpeed
         dateOffsetSpeed *= ANALOG_CLOCK_DATE_OFFSET_ACCELERATION
         dateOffsetSpeed = dateOffsetSpeed
@@ -85,22 +96,24 @@ class ClockWallManager
 
   # Starts the main animation
   startAnimation: ->
-    @animationStarted = true
+    @mode = MODE.HOME_TO_MEDIUM_VIEW
 
     # Move the middle clock back to place
+    moveClockToMiddleDuration = 500
+    moveClockToMiddleDelay = 4000
     setTimeout =>
       $captionArea = $('.overlay .caption-area')
 
       # Move middle clock
       startTime = new Date().getTime()
-      duration = 500
+      moveClockToMiddleDuration = 500
       $('.middle-clock').animate
         opacity: 1
       ,
-        duration: duration
+        duration: moveClockToMiddleDuration
         step: ->
-          timeDifference = Math.min (new Date().getTime() - startTime), duration
-          timeRatio = timeDifference / duration
+          timeDifference = Math.min (new Date().getTime() - startTime), moveClockToMiddleDuration
+          timeRatio = timeDifference / moveClockToMiddleDuration
           easeRatio = EASE_IN_OUT_BEZIER timeRatio
           y = ANALOG_CLOCK_TRANSLATE_UP + (-ANALOG_CLOCK_TRANSLATE_UP * easeRatio)
           $(this).css('transform', 'translateY(' + y + 'px)')
@@ -110,8 +123,8 @@ class ClockWallManager
           $captionArea.css('transform', 'translateY(0)')
 
       # Fade out caption
-      $('.overlay .caption-area').fadeOut()
-    , 4000
+      $('.overlay .caption-area').fadeOut(moveClockToMiddleDuration)
+    , moveClockToMiddleDelay
 
     # Bring in 7x7 clocks
     fadeInWidth = 7
@@ -120,7 +133,8 @@ class ClockWallManager
     startY = (@numClocksTall - fadeInHeight) / 2
     endX = startX + fadeInWidth
     endY = startY + fadeInHeight
-    duration = 1500
+    moveAnimationDuration = 1500
+    moveAnimationDelay = 6000
     setTimeout =>
       # Go through all the clocks and fade them in
       startTime = new Date().getTime()
@@ -138,10 +152,10 @@ class ClockWallManager
               $clock.animate
                 opacity: 1
               ,
-                duration: duration
+                duration: moveAnimationDuration
                 step: ->
-                  timeDifference = Math.min (new Date().getTime() - startTime), duration
-                  timeRatio = timeDifference / duration
+                  timeDifference = Math.min (new Date().getTime() - startTime), moveAnimationDuration
+                  timeRatio = timeDifference / moveAnimationDuration
                   easeRatio = EASE_IN_OUT_BEZIER timeRatio
                   inverseTimeRatio = 1 - easeRatio
                   newXOffset = xOffset * inverseTimeRatio
@@ -149,7 +163,12 @@ class ClockWallManager
                   $clock.css
                     transform: 'translate(' + newXOffset + 'px, ' + newYOffset + 'px)'
             )($clock, xOffset, yOffset)
-    , 6000
+    , moveAnimationDelay
+
+    # Set mode to medium view
+    setTimeout =>
+      @mode = MODE.MEDIUM_VIEW
+    , moveAnimationDelay + moveAnimationDuration
 
 
   # Gets a single clock
