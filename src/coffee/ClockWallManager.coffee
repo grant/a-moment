@@ -89,6 +89,8 @@ class ClockWallManager
 
     # Move the middle clock back to place
     setTimeout =>
+      $captionArea = $('.overlay .caption-area')
+
       # Move middle clock
       startTime = new Date().getTime()
       duration = 500
@@ -103,6 +105,12 @@ class ClockWallManager
           y = ANALOG_CLOCK_TRANSLATE_UP + (-ANALOG_CLOCK_TRANSLATE_UP * easeRatio)
           $(this).css('transform', 'translateY(' + y + 'px)')
 
+          $captionArea.css('transform', 'translateY(' + (y - ANALOG_CLOCK_TRANSLATE_UP) + 'px)')
+        end: ->
+          $captionArea.css('transform', 'translateY(0)')
+
+      # Fade out caption
+      $('.overlay .caption-area').fadeOut()
     , 4000
 
     # Bring in 7x7 clocks
