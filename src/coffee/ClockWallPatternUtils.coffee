@@ -48,4 +48,16 @@ ClockWallPatternUtils =
 
     background
 
+  # Rotates a pattern by the specified number of degrees
+  # The direction can be 'cw' or 'ccw'
+  rotate: (pattern, degrees, direction = 'cw') ->
+    if direction == 'ccw'
+      degrees = -degrees % 360
+    pattern.map (row) -> row.map (hands) -> hands.map (rot) -> (rot + degrees + 360) % 360
+
+  # Inverses a wall pattern (rotates all hands by 90 degrees)
+  inverse: (pattern) ->
+    ClockWallPatternUtils.rotate pattern, 90
+
+
 module.exports = ClockWallPatternUtils

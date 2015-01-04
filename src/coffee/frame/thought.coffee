@@ -1,6 +1,5 @@
 Frame = require './Frame'
 CommonClockWallPattern = require '../CommonClockWallPattern'
-HandRotationUtils = require '../HandRotationUtils'
 ClockWallPatternUtils = require '../ClockWallPatternUtils'
 
 # A 7x7 lightbulb pattern

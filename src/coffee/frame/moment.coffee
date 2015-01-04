@@ -26,7 +26,6 @@ class FrameMoment extends Frame
 
     for y in [start.y..end.y]
       for x in [start.x..end.x]
-        console.log x
         xDiff = x - middle.x
         yDiff = y - middle.y
         if !(x == middle.x and y == middle.y)
