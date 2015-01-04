@@ -1,9 +1,8 @@
-ClockWallPattern = require './ClockWallPattern'
 CommonClockWallPattern = require './CommonClockWallPattern'
 NumberClockWallPattern = require './NumberClockWallPattern'
 
 # A clock pattern that displays a time in the format HH:mm
-class TimeClockWallPattern extends ClockWallPattern
+class TimeClockWallPattern
   constructor: (numClocksWide, numClocksTall) ->
     super(numClocksWide, numClocksTall)
     @hours = 0

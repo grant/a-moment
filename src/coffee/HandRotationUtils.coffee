@@ -60,4 +60,10 @@ HandRotationUtils =
 
     handRotations
 
+  # Converts an angle to hand rotatiosn that make the hands parallel to this angle
+  # @param radians An angle in radians
+  angleToHandRotation: (radians) ->
+    deg = radians * (180 / Math.PI)
+    [deg, (deg + 180) % 360]
+
 module.exports = HandRotationUtils

@@ -45,7 +45,6 @@
   "dependencies": {
     "math-sign": "^1.0.0",
     "raf": "^2.0.4",
-    "require-all": "^1.0.0",
     "timing-function": "^0.2.3"
   }
 }

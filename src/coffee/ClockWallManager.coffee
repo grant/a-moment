@@ -1,14 +1,12 @@
 $ = require 'jquery'
-requireall = require 'require-all'
 curve = require 'timing-function'
 raf = require 'raf'
 AnalogClock = require './AnalogClock'
 Clock = require './Clock'
-ClockWallPattern = require './ClockWallPattern'
 ClockWallInterpolator = require './ClockWallInterpolator'
 TimeClockWallPattern = require './TimeClockWallPattern'
 CommonClockWallPattern = require './CommonClockWallPattern'
-Frame = requireall './frame'
+Frame = require './Frame'
 
 # Constants
 ANALOG_CLOCK_DATE_OFFSET_ACCELERATION = 1.03
@@ -61,7 +59,9 @@ class ClockWallManager
     raf tick
 
     # Load clock pattern for animation
-    @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
+    # @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
+    pattern = new Frame.moment().getPatterns()
+    @setPattern(pattern)
     @patternQueue = []
 
     # timePattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
@@ -186,10 +186,9 @@ class ClockWallManager
   # Sets the current clock pattern
   setPattern: (pattern) ->
     if pattern
-      handRotations = pattern.getHandPositions()
       for y in [0...@numClocksTall]
         for x in [0...@numClocksWide]
-          @getClock(x, y).setHands(handRotations[y][x])
+          @getClock(x, y).setHands(pattern[y][x])
 
   # Adds an array of patterns to the next clock patterns queue.
   queuePatterns: (patterns) ->

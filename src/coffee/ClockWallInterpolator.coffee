@@ -1,5 +1,5 @@
-ClockWallPattern = require './ClockWallPattern'
 ClockInterpolator = require './ClockInterpolator'
+CommonClockWallPattern = require './CommonClockWallPattern'
 
 # A helper singleton that can generate clock wall patterns
 # by interpolating it's clocks
@@ -12,7 +12,7 @@ ClockWallInterpolator =
     # Create the empty patterns
     patterns = []
     for i in [0...numFrames]
-      patterns[i] = new ClockWallPattern(width, height)
+      patterns[i] = CommonClockWallPattern.empty(width, height)
 
     # Create temporary clocks interpolation array
     # Stores interpolations at an (x, y)

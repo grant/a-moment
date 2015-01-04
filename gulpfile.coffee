@@ -18,7 +18,7 @@ watch = require 'gulp-watch'
 # Directories
 
 src =
-  coffee: 'src/coffee/*.coffee'
+  coffee: 'src/coffee/**/*.coffee'
   coffee_index: './src/coffee/index.coffee'
   stylus_index: 'src/stylus/index.styl'
   stylus: 'src/stylus/*.styl'

@@ -2,6 +2,18 @@ HandRotationUtils = require './HandRotationUtils'
 
 # Common clock wall patterns
 CommonClockWallPattern =
+  # Empty
+  # Note: This is an invalid pattern to display
+  empty: (width, height) ->
+    pattern = []
+    for y in [0...height]
+      pattern[y] = []
+      for x in [0...width]
+        pattern[y][x] = []
+
+    pattern
+
+
   # Horizontal lines
   #
   # Example (2x2)
