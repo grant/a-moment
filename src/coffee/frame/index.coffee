@@ -5,3 +5,4 @@ module.exports =
   wish: require './wish'
   search: require './search'
   drink: require './drink'
+  text: require './text'
