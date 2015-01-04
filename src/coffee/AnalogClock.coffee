@@ -10,6 +10,8 @@ SECOND_HAND_LENGTH =
 
 SECOND_HAND_DOT_SIZE = 1.5
 
+FADE_OUT_DURATION = 300 # ms
+
 # An analog clock that shows the time using the second, minute, and hour hand
 class AnalogClock extends Clock
   constructor: (@$el) ->
@@ -91,5 +93,10 @@ class AnalogClock extends Clock
     hourHandRatio = hours / 12 + minuteHandRatio / 12
     @setHands [hourHandRatio, minuteHandRatio, secondHandRatio].map (ratio) -> (ratio * 360) - 90 % 360
 
+  # Removes the second hand from the clock
+  removeSecondHand: ->
+    @$el.find('.hole').fadeOut FADE_OUT_DURATION
+    @$secondHand.fadeOut FADE_OUT_DURATION, ->
+      $(this).remove()
 
 module.exports = AnalogClock

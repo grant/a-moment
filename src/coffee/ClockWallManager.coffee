@@ -1,4 +1,5 @@
 $ = require 'jquery'
+requireall = require 'require-all'
 curve = require 'timing-function'
 raf = require 'raf'
 AnalogClock = require './AnalogClock'
@@ -7,6 +8,7 @@ ClockWallPattern = require './ClockWallPattern'
 ClockWallInterpolator = require './ClockWallInterpolator'
 TimeClockWallPattern = require './TimeClockWallPattern'
 CommonClockWallPattern = require './CommonClockWallPattern'
+Frame = requireall './frame'
 
 # Constants
 ANALOG_CLOCK_DATE_OFFSET_ACCELERATION = 1.03
@@ -44,20 +46,23 @@ class ClockWallManager
     tick = =>
       raf tick
 
-      date = new Date
+      # Accelerate analog clock speed
       if @mode == MODE.HOME_TO_MEDIUM_VIEW
         dateOffset += dateOffsetSpeed
         dateOffsetSpeed *= ANALOG_CLOCK_DATE_OFFSET_ACCELERATION
         dateOffsetSpeed = dateOffsetSpeed
 
-      date.setTime date.getTime() - dateOffset
-      analogClock.updateHands(date)
+      # Update analog clock
+      if @mode in [MODE.HOME, MODE.HOME_TO_MEDIUM_VIEW]
+        date = new Date
+        date.setTime date.getTime() - dateOffset
+        analogClock.updateHands(date)
 
     raf tick
 
-    # # Load default clock pattern
-    # @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
-    # @patternQueue = []
+    # Load clock pattern for animation
+    @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
+    @patternQueue = []
 
     # timePattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
     # timePattern.setTime(10, 67)
@@ -168,6 +173,9 @@ class ClockWallManager
     # Set mode to medium view
     setTimeout =>
       @mode = MODE.MEDIUM_VIEW
+
+      # Fade out analog clock second hand
+      @analogClock.removeSecondHand()
     , moveAnimationDelay + moveAnimationDuration
 
 
