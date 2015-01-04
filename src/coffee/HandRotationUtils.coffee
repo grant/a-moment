@@ -15,6 +15,21 @@ getHandRotation = (char) ->
     '.': [90, 90]
     '\\': [45, 225]
     '/': [135, 315]
+    '◢': [135, 315]
+    '◣': [45, 225]
+    '◤': [135, 315]
+    '◥': [45, 225]
+    # Weird mappings
+    # Horizontal to 45 degrees
+    '◰': [0, 135]
+    '◱': [0, 225]
+    '◲': [180, 315]
+    '◳': [45, 180]
+    # Vertical to 45 degrees
+    '◴': [90, 315]
+    '◵': [45, 270]
+    '◶': [135, 270]
+    '◷': [90, 225]
 
   mapping[char] || throw new Error('Unknown character: ' + char)
 
