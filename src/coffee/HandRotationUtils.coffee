@@ -2,6 +2,8 @@
 # Ex:
 # '-' converts to [0,180]
 getHandRotation = (char) ->
+  circleCurvature = 20
+  vCurvature = 20
   mapping =
     '│': [90, 270]
     '|': [90, 270]
@@ -19,6 +21,12 @@ getHandRotation = (char) ->
     '◣': [45, 225]
     '◤': [135, 315]
     '◥': [45, 225]
+    '◜': [90 + circleCurvature, 0 - circleCurvature]
+    '◝': [180 + circleCurvature, 90 - circleCurvature]
+    '◞': [270 + circleCurvature, 180 - circleCurvature]
+    '◟': [0 + circleCurvature, 270 - circleCurvature]
+    'v': [0 - vCurvature, 180 + vCurvature]
+    '^': [0 + vCurvature, 180 - vCurvature]
     # Weird mappings
     # Horizontal to 45 degrees
     '◰': [0, 135]
