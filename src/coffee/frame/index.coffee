@@ -6,3 +6,4 @@ module.exports =
   search: require './search'
   drink: require './drink'
   text: require './text'
+  laugh: require './laugh'
