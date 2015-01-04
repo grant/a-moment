@@ -60,7 +60,7 @@ class ClockWallManager
 
     # Load clock pattern for animation
     # @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
-    pattern = new Frame.wish().getPatterns()
+    pattern = new Frame.search().getPatterns()
     @setPattern(pattern)
     @patternQueue = []
 
