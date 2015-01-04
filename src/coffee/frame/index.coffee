@@ -4,3 +4,4 @@ module.exports =
   dream: require './dream'
   wish: require './wish'
   search: require './search'
+  drink: require './drink'
