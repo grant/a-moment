@@ -3,8 +3,8 @@ CommonClockWallPattern = require '../CommonClockWallPattern'
 HandRotationUtils = require '../HandRotationUtils'
 ClockWallPatternUtils = require '../ClockWallPatternUtils'
 
-# A 7x7 lightbulb pattern
-class FrameThought extends Frame
+# A 7x7 thought/dream bubble pattern
+class FrameDream extends Frame
   getPatterns: ->
     width = Frame.DEFAULT_WIDTH
     height = Frame.DEFAULT_HEIGHT
@@ -15,13 +15,13 @@ class FrameThought extends Frame
     # Make the middle 7x7 a star
     design =
     """
-    ◣◣◰-◳◢◢
-    ◣◴◣|◢◷◢
-    ◣|---|◢
-    ◣◵◤|◥◶◢
-    ◣◣◷-◴◢◢
-    ◣◣|-|◢◢
-    ◣◣└-┘◢◢
+    ◣◣◜vvv◝
+    ◣◣>vvv<
+    ◣◣>vvv<
+    ◣◣>vvv<
+    ◣◜◝^^^◞
+    ◜◝◞◢◢◢◢
+    ◟◞◢◢◢◢◢
     """
     pattern = ClockWallPatternUtils.toClockWallPattern(design)
 
@@ -29,4 +29,4 @@ class FrameThought extends Frame
 
     hands
 
-module.exports = FrameThought
+module.exports = FrameDream
