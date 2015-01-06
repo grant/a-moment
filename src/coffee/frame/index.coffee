@@ -8,3 +8,4 @@ module.exports =
   text: require './text'
   laugh: require './laugh'
   flirt: require './flirt'
+  kiss: require './kiss'

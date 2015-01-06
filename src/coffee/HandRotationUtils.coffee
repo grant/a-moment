@@ -5,6 +5,7 @@ getHandRotation = (char) ->
   circleCurvature = 20
   vCurvature = 20
   mapping =
+    ' ': null
     '│': [90, 270]
     '|': [90, 270]
     '─': [0, 180]
@@ -36,6 +37,8 @@ getHandRotation = (char) ->
     '^': [0 + vCurvature, 180 - vCurvature]
     '>': [90 + vCurvature, 270 - vCurvature]
     '<': [90 - vCurvature, 270 + vCurvature]
+    '«': [45, 315]
+    '»': [135, 225]
     # Weird mappings
     # Horizontal to 45 degrees
     '◰': [0, 135]
@@ -48,7 +51,9 @@ getHandRotation = (char) ->
     '◶': [135, 270]
     '◷': [90, 225]
 
-  mapping[char] || throw new Error('Unknown character: ' + char)
+  (mapping[char] != undefined) || throw new Error('Unknown character: "' + char + '"')
+
+  mapping[char]
 
 
 # Utility functions for clock hands

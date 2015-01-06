@@ -8,24 +8,15 @@ class FrameMoment extends Frame
     width = Frame.DEFAULT_WIDTH
     height = Frame.DEFAULT_HEIGHT
 
-    # Default background is horizontal
-    hands = CommonClockWallPattern.horizontal(width, height)
+    hands = CommonClockWallPattern.empty(width, height)
 
-    # Make the middle 7x7 a star
-    starSize = 7
-    starRadius = Math.floor(starSize / 2)
+    # Make the star
     middle =
       x: Math.floor(width / 2)
       y: Math.floor(height / 2)
-    start =
-      x: middle.x - starRadius
-      y: middle.y - starRadius
-    end =
-      x: middle.x + starRadius
-      y: middle.y + starRadius
 
-    for y in [start.y..end.y]
-      for x in [start.x..end.x]
+    for y in [0...height]
+      for x in [0...width]
         xDiff = x - middle.x
         yDiff = y - middle.y
         if !(x == middle.x and y == middle.y)
