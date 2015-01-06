@@ -10,3 +10,4 @@ module.exports =
   flirt: require './flirt'
   kiss: require './kiss'
   lie: require './lie'
+  breakup: require './breakup'
