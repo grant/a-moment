@@ -7,6 +7,7 @@ class FrameLaugh extends Frame
   getPatterns: ->
     hands = new FrameMoment().getPatterns()
 
+    # Design must have odd dimensions to center properly
     design =
     """
       ^ ^
@@ -19,13 +20,13 @@ class FrameLaugh extends Frame
 
     hands = ClockWallPatternUtils.place(hands, pattern, 'center')
 
-    # # Manual fixes to design
+    # ## Manual fixes to design
     lipEdgeCurve = 10
-    hands[4][4] = hands[4][4].map (val) ->
+    hands[4][5] = hands[4][5].map (val) ->
       if val == 180
         val -= lipEdgeCurve
       val
-    hands[4][10] = hands[4][10].map (val) ->
+    hands[4][9] = hands[4][9].map (val) ->
       if val == 0
         val += lipEdgeCurve
       val
