@@ -9,3 +9,4 @@ module.exports =
   laugh: require './laugh'
   flirt: require './flirt'
   kiss: require './kiss'
+  lie: require './lie'
