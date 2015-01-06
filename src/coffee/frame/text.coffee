@@ -1,5 +1,4 @@
 Frame = require './Frame'
-CommonClockWallPattern = require '../CommonClockWallPattern'
 ClockWallPatternUtils = require '../ClockWallPatternUtils'
 
 # A 15x9 phone with text messages

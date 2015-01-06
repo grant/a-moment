@@ -1,5 +1,23 @@
 HandRotationUtils = require './HandRotationUtils'
 
+
+# Fills a pattern with the specified handRotation design
+fillPatternSingleRotation = (width, height, handRotations) ->
+  fillPatternGridRotation(width, height, [[handRotations]])
+
+# Fills a pattern with overflow of the given grid rotation
+fillPatternGridRotation = (width, height, gridRotations) ->
+  pattern = []
+  rotations =
+    width: gridRotations[0].length
+    height: gridRotations.length
+  for y in [0...height]
+    pattern[y] = []
+    for x in [0...width]
+      pattern[y][x] = gridRotations[y % rotations.height][x % rotations.width]
+
+  pattern
+
 # Common clock wall patterns
 CommonClockWallPattern =
   # Empty
@@ -13,6 +31,13 @@ CommonClockWallPattern =
 
     pattern
 
+  # Dots
+  #
+  # Example (2x2)
+  # ``
+  # ``
+  dots: (width, height) ->
+    fillPatternSingleRotation(width, height, HandRotationUtils.toHandRotation('`'))
 
   # Horizontal lines
   #
@@ -234,22 +259,5 @@ CommonClockWallPattern =
         when 'up' then --position[1]
 
     pattern
-
-# Fills a pattern with the specified handRotation design
-fillPatternSingleRotation = (width, height, handRotations) ->
-  fillPatternGridRotation(width, height, [[handRotations]])
-
-# Fills a pattern with overflow of the given grid rotation
-fillPatternGridRotation = (width, height, gridRotations) ->
-  pattern = []
-  rotations =
-    width: gridRotations[0].length
-    height: gridRotations.length
-  for y in [0...height]
-    pattern[y] = []
-    for x in [0...width]
-      pattern[y][x] = gridRotations[y % rotations.height][x % rotations.width]
-
-  pattern
 
 module.exports = CommonClockWallPattern

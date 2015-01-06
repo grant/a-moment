@@ -7,3 +7,4 @@ module.exports =
   drink: require './drink'
   text: require './text'
   laugh: require './laugh'
+  flirt: require './flirt'

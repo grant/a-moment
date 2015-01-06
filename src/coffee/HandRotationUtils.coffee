@@ -26,6 +26,8 @@ getHandRotation = (char) ->
     '◹': [45, 45]
     '◺': [225, 225]
     '◿': [135, 135]
+    '(': [45, 315]
+    ')': [135, 225]
     '◜': [90 + circleCurvature, 0 - circleCurvature]
     '◝': [180 + circleCurvature, 90 - circleCurvature]
     '◞': [270 + circleCurvature, 180 - circleCurvature]
