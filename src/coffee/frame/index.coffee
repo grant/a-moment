@@ -11,3 +11,4 @@ module.exports =
   kiss: require './kiss'
   lie: require './lie'
   breakup: require './breakup'
+  game: require './game'

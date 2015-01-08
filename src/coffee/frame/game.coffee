@@ -1,4 +1,5 @@
 Frame = require './Frame'
+Pong = require './pong'
 CommonClockWallPattern = require '../CommonClockWallPattern'
 ClockWallPatternUtils = require '../ClockWallPatternUtils'
 
@@ -8,22 +9,9 @@ class FrameGame extends Frame
     width = Frame.DEFAULT_WIDTH
     height = Frame.DEFAULT_HEIGHT
 
-    # Background pattern for pong g
+    # Background pattern for pong game
     background = CommonClockWallPattern.horizontal(width, height)
 
-    paddleDesign = [
-      """
-      ┌┐
-      ||
-      └┘
-      """
-    ]
-    ballDesign = [
-      """
-      ┌┐
-      └┘
-      """
-    ]
     hands = ClockWallPatternUtils.toClockWallPattern(background)
 
     hands
