@@ -12,7 +12,8 @@ class FrameGame extends Frame
     # Background pattern for pong game
     background = CommonClockWallPattern.horizontal(width, height)
 
-    hands = ClockWallPatternUtils.toClockWallPattern(background)
+    # hands = ClockWallPatternUtils.toClockWallPattern(background)
+    hands = background
 
     hands
 
