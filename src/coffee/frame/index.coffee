@@ -12,3 +12,4 @@ module.exports =
   lie: require './lie'
   breakup: require './breakup'
   game: require './game'
+  success: require './success'
