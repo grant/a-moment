@@ -22,11 +22,6 @@ getHandRotation = (char) ->
     '◣': [45, 225]
     '◤': [135, 315]
     '◥': [45, 225]
-    # Short 45 degree angles
-    '◸': [315, 315]
-    '◹': [45, 45]
-    '◺': [225, 225]
-    '◿': [135, 135]
     '(': [45, 315]
     ')': [135, 225]
     '◜': [90 + circleCurvature, 0 - circleCurvature]
@@ -37,9 +32,22 @@ getHandRotation = (char) ->
     '^': [0 + vCurvature, 180 - vCurvature]
     '>': [90 + vCurvature, 270 - vCurvature]
     '<': [90 - vCurvature, 270 + vCurvature]
+    # Exact 45 degrees
     '«': [45, 315]
     '»': [135, 225]
+    '⌵': [225, 315]
+    '⌃': [45, 135]
+
     # Weird mappings
+    # Short 45 degree angles
+    '◸': [315, 315]
+    '◹': [45, 45]
+    '◺': [225, 225]
+    '◿': [135, 135]
+    '╗': [315, 315]
+    '╚': [135, 135]
+    '╔': [225, 225]
+    '╝': [45, 45]
     # Horizontal to 45 degrees
     '◰': [0, 135]
     '◱': [0, 225]
@@ -50,11 +58,11 @@ getHandRotation = (char) ->
     '◵': [45, 270]
     '◶': [135, 270]
     '◷': [90, 225]
-    # Corner short hands
-    '╗': [315, 315]
-    '╚': [135, 135]
-    '╔': [225, 225]
-    '╝': [45, 45]
+    # Corner
+    '⤥': [0, 45]
+    '⤦': [135, 180]
+    '⤤': [0, 315]
+    '⤣': [180, 225]
 
   (mapping[char] != undefined) || throw new Error('Unknown character: "' + char + '"')
 
