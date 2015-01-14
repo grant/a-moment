@@ -1,7 +1,7 @@
 Frame = require './Frame'
 ClockWallPatternUtils = require '../ClockWallPatternUtils'
 
-# A stock market graph going up and to the right
+# A fist rising upward
 class FrameBetter extends Frame
   getPatterns: ->
     width = Frame.DEFAULT_WIDTH

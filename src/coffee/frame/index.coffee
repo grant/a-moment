@@ -13,3 +13,6 @@ module.exports =
   breakup: require './breakup'
   game: require './game'
   success: require './success'
+  failure: require './failure'
+  better: require './better'
+  year: require './year'

@@ -1,7 +1,7 @@
 Frame = require './Frame'
 ClockWallPatternUtils = require '../ClockWallPatternUtils'
 
-# A stock market graph going up and to the right
+# An arrow animating downward
 class FrameFailure extends Frame
   getPatterns: ->
     arrowDesign =
