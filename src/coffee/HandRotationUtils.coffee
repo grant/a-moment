@@ -50,6 +50,11 @@ getHandRotation = (char) ->
     '◵': [45, 270]
     '◶': [135, 270]
     '◷': [90, 225]
+    # Corner short hands
+    '╗': [315, 315]
+    '╚': [135, 135]
+    '╔': [225, 225]
+    '╝': [45, 45]
 
   (mapping[char] != undefined) || throw new Error('Unknown character: "' + char + '"')
 
