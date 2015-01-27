@@ -15,3 +15,12 @@ class AnimationSequence
     newPatterns = @patterns.concat(animationSequence.patterns)
     newDurations = @durations.concat(animationSequence.durations)
     return new AnimationSequence(newPatterns, newDurations)
+
+  # Sets the speed for animation interpolation
+  setSpeed: (@animationSpeed) ->
+
+  # Interpolates between two frames
+  # @param pattern The next pattern to animate to.
+  # @param duration The duration that the interpolation should take
+  interpolate: (pattern, duration) ->
+    # TODO
