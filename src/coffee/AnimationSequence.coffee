@@ -3,23 +3,29 @@
 # * A duration (ms)
 class AnimationSequence
 
-  # Initializes an animation sequence with a pattern and a duration for that pattern
-  # @param pattern A single pattern or array of patterns
-  # @param duration A single duration or array of durations
-  constructor: (pattern = [], duration = []) ->
-    @patterns = [].concat(pattern)
-    @durations = [].concat(duration)
+  # Initializes an animation sequence with a pattern
+  # @param pattern A single pattern
+  constructor: (pattern) ->
+    @patterns = []
+    @durations = []
+    if pattern
+      @patterns.push pattern
+      @durations.push 0
 
   # Returns a concatted animation sequence
-  concat: (animationSequence) ->
-    newPatterns = @patterns.concat(animationSequence.patterns)
-    newDurations = @durations.concat(animationSequence.durations)
-    return new AnimationSequence(newPatterns, newDurations)
+  concat: (animationSequences...) ->
+    for sequence in animationSequences
+      @patterns = @patterns.concat(sequence.patterns)
+      @durations = @durations.concat(sequence.durations)
+    @
 
-  # Interpolates between two frames
-  # @param pattern The next pattern to animate to.
-  # @param duration The duration that the interpolation should take
-  interpolate: (pattern, duration) ->
-    # TODO
+  # Adds a frame
+  # @param pattern The next frame's pattern.
+  # @param duration The duration that frame
+  addFrame: (pattern, duration) ->
+    # If first pattern, add it
+    @patterns.push pattern
+    @durations.push duration
+    @
 
 module.exports = AnimationSequence

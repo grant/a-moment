@@ -1,6 +1,7 @@
 $ = require 'jquery'
 curve = require 'timing-function'
 raf = require 'raf'
+Animator = require './Animator'
 AnalogClock = require './AnalogClock'
 Clock = require './Clock'
 ClockWallInterpolator = require './ClockWallInterpolator'
@@ -40,6 +41,10 @@ class ClockWallManager
     dateOffset = 0
     dateOffsetSpeed = 2
 
+    # Get animation sequence
+    animationSequence = Animator.getAnimationSequence()
+    console.log animationSequence
+
     # Setup raf (60 fps)
     tick = =>
       raf tick
@@ -60,9 +65,8 @@ class ClockWallManager
 
     # Load clock pattern for animation
     # @setPattern(new ClockWallPattern(numClocksWide, numClocksTall))
-    pattern = new Frame.success().getPatterns()
-    @setPattern(pattern)
-    @patternQueue = []
+    # pattern = new Frame.success().getPatterns()
+    # @setPattern(pattern)
 
     # timePattern = new TimeClockWallPattern(numClocksWide, numClocksTall)
     # timePattern.setTime(10, 67)
@@ -189,18 +193,6 @@ class ClockWallManager
       for y in [0...@numClocksTall]
         for x in [0...@numClocksWide]
           @getClock(x, y).setHands(pattern[y][x])
-
-  # Adds an array of patterns to the next clock patterns queue.
-  queuePatterns: (patterns) ->
-    @patternQueue = @patternQueue.concat(patterns)
-
-  # Returns true if the pattern queue is empty
-  patternQueueIsEmpty: ->
-    !@patternQueue.length
-
-  # Sets the current pattern to the next one in the queue
-  nextPattern: ->
-    @setPattern @patternQueue.shift()
 
   # ## Private Methods
 
