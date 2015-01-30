@@ -2,9 +2,9 @@ Frame = require './Frame'
 
 # A magician with a dream
 Animator =
-  # Gets all the frames needed
-  getAnimation: ->
-    frames = @_getVerse1.concat @_getVerse2(), @_getVerse3
+  # Gets the whole animation sequence
+  getAnimationSequence: ->
+    sequence = new AnimationSequence().concat @_getVerse1, @_getVerse2(), @_getVerse3
 
     # ## Verse 1 (7x7)
     #
@@ -26,7 +26,7 @@ Animator =
     # A lie
     # A breakup
     #
-    # ## Verse 3
+    # ## Verse 3 (15x9)
     #
     # A game
     # A win
@@ -36,19 +36,21 @@ Animator =
     # A try
     # To do better
 
-    frames
+    sequence
 
   # Verse 1
   _getVerse1: ->
+    verse1 = new AnimationSequence()
     moment = new Frame.moment().getPatterns()
     thought = new Frame.thought().getPatterns()
     dream = new Frame.dream().getPatterns()
     wish = new Frame.wish().getPatterns()
     search = new Frame.search().getPatterns()
-    return []
+    verse1
 
   # Verse 2
   _getVerse2: ->
+    verse2 = new AnimationSequence()
     drink = new Frame.drink().getPatterns()
     text = new Frame.text().getPatterns()
     laugh = new Frame.laugh().getPatterns()
@@ -56,15 +58,16 @@ Animator =
     kiss = new Frame.kiss().getPatterns()
     lie = new Frame.lie().getPatterns()
     breakup = new Frame.breakup().getPatterns()
-    return []
+    verse2
 
   # Verse 3
   _getVerse3: ->
+    verse3 = new AnimationSequence()
     game = new Frame.game().getPatterns()
     success = new Frame.success().getPatterns()
     failure = new Frame.failure().getPatterns()
     better = new Frame.better().getPatterns()
     year = new Frame.year().getPatterns()
-    return []
+    verse3
 
 module.exports = Animator

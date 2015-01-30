@@ -6,7 +6,7 @@ class AnimationSequence
   # Initializes an animation sequence with a pattern and a duration for that pattern
   # @param pattern A single pattern or array of patterns
   # @param duration A single duration or array of durations
-  constructor: (pattern, duration) ->
+  constructor: (pattern = [], duration = []) ->
     @patterns = [].concat(pattern)
     @durations = [].concat(duration)
 
@@ -16,11 +16,10 @@ class AnimationSequence
     newDurations = @durations.concat(animationSequence.durations)
     return new AnimationSequence(newPatterns, newDurations)
 
-  # Sets the speed for animation interpolation
-  setSpeed: (@animationSpeed) ->
-
   # Interpolates between two frames
   # @param pattern The next pattern to animate to.
   # @param duration The duration that the interpolation should take
   interpolate: (pattern, duration) ->
     # TODO
+
+module.exports = AnimationSequence
