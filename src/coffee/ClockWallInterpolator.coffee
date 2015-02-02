@@ -4,7 +4,25 @@ CommonClockWallPattern = require './CommonClockWallPattern'
 # A helper singleton that can generate clock wall patterns
 # by interpolating it's clocks
 ClockWallInterpolator =
-  # Interpolates the patterns
+  # Interpolates the clock rotation given a current time
+  getPattern: (startPattern, endPattern, currTime) ->
+    width = startPattern[0].length
+    height = startPattern.length
+
+    pattern = CommonClockWallPattern.empty width, height
+    handsGrid = []
+    for y in [0...height]
+      handsGrid[y] = []
+      for x in [0...width]
+        startRotation = startPattern[y][x]
+        endRotation = endPattern[y][x]
+        handsGrid[y][x] = ClockInterpolator.getPattern(startRotation, endRotation, currTime)
+
+    pattern.setHandPositions handsGrid
+
+    pattern
+
+  # Interpolates the patterns given the number of frames and interpolation speed
   getPatterns: (startPattern, endPattern, numFrames, interpolationSpeed) ->
     width = startPattern[0].length
     height = startPattern.length
