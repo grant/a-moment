@@ -5,6 +5,7 @@ Animator = require './Animator'
 AnalogClock = require './AnalogClock'
 Clock = require './Clock'
 ClockWallInterpolator = require './ClockWallInterpolator'
+AnimationSequenceInterpolator = require './AnimationSequenceInterpolator'
 TimeClockWallPattern = require './TimeClockWallPattern'
 CommonClockWallPattern = require './CommonClockWallPattern'
 Frame = require './Frame'
@@ -43,7 +44,7 @@ class ClockWallManager
 
     # Get animation sequence
     animationSequence = Animator.getAnimationSequence()
-    console.log animationSequence
+    interpolator = new AnimationSequenceInterpolator animationSequence
 
     # Setup raf (60 fps)
     tick = =>
