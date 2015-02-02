@@ -61,37 +61,37 @@ Animator =
   # Verse 2
   _getVerse2: ->
     verse2 = new AnimationSequence()
-    drink = new Frame.drink().getPatterns()
-    text = new Frame.text().getPatterns()
-    laugh = new Frame.laugh().getPatterns()
-    flirt = new Frame.flirt().getPatterns()
-    kiss = new Frame.kiss().getPatterns()
-    lie = new Frame.lie().getPatterns()
-    breakup = new Frame.breakup().getPatterns()
-    verse2
-      .addFrame(drink, 1)
-      .addFrame(text, 1)
-      .addFrame(laugh, 1)
-      .addFrame(flirt, 1)
-      .addFrame(kiss, 1)
-      .addFrame(lie, 1)
-      .addFrame(breakup, 1)
+    # drink = new Frame.drink().getPatterns()
+    # text = new Frame.text().getPatterns()
+    # laugh = new Frame.laugh().getPatterns()
+    # flirt = new Frame.flirt().getPatterns()
+    # kiss = new Frame.kiss().getPatterns()
+    # lie = new Frame.lie().getPatterns()
+    # breakup = new Frame.breakup().getPatterns()
+    # verse2
+    #   .addFrame(drink, 1)
+    #   .addFrame(text, 1)
+    #   .addFrame(laugh, 1)
+    #   .addFrame(flirt, 1)
+    #   .addFrame(kiss, 1)
+    #   .addFrame(lie, 1)
+    #   .addFrame(breakup, 1)
     verse2
 
   # Verse 3
   _getVerse3: ->
     verse3 = new AnimationSequence()
-    game = new Frame.game().getPatterns()
-    success = new Frame.success().getPatterns()
-    failure = new Frame.failure().getPatterns()
-    better = new Frame.better().getPatterns()
-    year = new Frame.year().getPatterns()
-    verse3
-      .addFrame(game, 1)
-      .addFrame(success, 1)
-      .addFrame(failure, 1)
-      .addFrame(better, 1)
-      .addFrame(year, 1)
+    # game = new Frame.game().getPatterns()
+    # success = new Frame.success().getPatterns()
+    # failure = new Frame.failure().getPatterns()
+    # better = new Frame.better().getPatterns()
+    # year = new Frame.year().getPatterns()
+    # verse3
+    #   .addFrame(game, 1)
+    #   .addFrame(success, 1)
+    #   .addFrame(failure, 1)
+    #   .addFrame(better, 1)
+    #   .addFrame(year, 1)
     verse3
 
 module.exports = Animator
