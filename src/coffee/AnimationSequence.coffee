@@ -28,4 +28,8 @@ class AnimationSequence
     @durations.push duration
     @
 
+  # Gets the size of the sequence
+  size: ->
+    @patterns.length
+
 module.exports = AnimationSequence
