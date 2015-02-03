@@ -63,8 +63,8 @@ class ClockWallManager
         date.setTime date.getTime() - dateOffset
         analogClock.updateHands(date)
 
-      # animationTime = new Date().getTime() - startTime.getTime()
-      # interpolator.getPattern animationTime
+      animationTime = new Date().getTime() - startTime.getTime()
+      interpolator.getPattern animationTime
 
     raf tick
 

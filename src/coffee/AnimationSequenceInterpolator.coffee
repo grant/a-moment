@@ -30,3 +30,5 @@ class AnimationSequenceInterpolator
       pattern = ClockWallInterpolator.getPattern prevPattern, nextPattern, currTime
 
     pattern
+
+module.exports = AnimationSequenceInterpolator
