@@ -51,11 +51,11 @@ Animator =
     # Setup sequence
     verse1 = new AnimationSequence()
     verse1
-      .addFrame(moment, 1)
-      .addFrame(thought, 1)
-      .addFrame(dream, 1)
-      .addFrame(wish, 1)
-      .addFrame(search, 1)
+      .addFrame(moment, 1000)
+      .addFrame(thought, 1000)
+      .addFrame(dream, 1000)
+      .addFrame(wish, 1000)
+      .addFrame(search, 1000)
     verse1
 
   # Verse 2

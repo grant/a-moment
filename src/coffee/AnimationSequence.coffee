@@ -21,7 +21,7 @@ class AnimationSequence
 
   # Adds a frame
   # @param pattern The next frame's pattern.
-  # @param duration The duration that frame
+  # @param duration The duration that frame (ms)
   addFrame: (pattern, duration) ->
     # If first pattern, add it
     @patterns.push pattern
