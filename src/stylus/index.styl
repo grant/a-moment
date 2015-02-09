@@ -105,7 +105,7 @@ body
     .clock
       clockPadding = 10%
       clockBorderWidth = 3%
-      handWidth = themeHomeColorClockHandWidth
+      handWidth = themeHomeColorClockHandWidth * 2
       secondHandWidth = themeHomeColorClockHandWidth / 3
 
       position relative
@@ -130,7 +130,7 @@ body
         height 90%
         border-radius 50%
         // TODO: Disable box-shadows when in 15x9 mode because it make the page lag
-        box-shadow 0 5px 1px 1px rgba(black, 0.2)
+        // box-shadow 0 5px 1px 1px rgba(black, 0.2)
 
       .border
         fill themeHomeColorClockBorder
@@ -140,6 +140,7 @@ body
 
       .hand
         stroke themeHomeColorCockHandsMain
+        stroke-width handWidth
 
         &.second
           stroke themeHomeColorClockBorder
