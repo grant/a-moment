@@ -1,6 +1,6 @@
 # Math.sign shim
 Math.sign = require 'math-sign'
-defaultRotationSpeed = 300 # 300 degrees per second
+defaultRotationSpeed = 500 # degrees per second
 
 # A helper singleton that can generate clock rotations
 # for interpolation between two keyframe clock rotations
