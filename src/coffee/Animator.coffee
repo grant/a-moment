@@ -51,31 +51,31 @@ Animator =
     # Setup sequence
     verse1 = new AnimationSequence()
     verse1
-      .addFrame(moment, 2000)
-      .addFrame(thought, 2000)
-      .addFrame(dream, 2000)
-      .addFrame(wish, 2000)
-      .addFrame(search, 2000)
+      .addFrame(moment, 1000)
+      .addFrame(thought, 1000)
+      .addFrame(dream, 1000)
+      .addFrame(wish, 1000)
+      .addFrame(search, 1000)
     verse1
 
   # Verse 2
   _getVerse2: ->
     verse2 = new AnimationSequence()
-    # drink = new Frame.drink().getPatterns()
-    # text = new Frame.text().getPatterns()
-    # laugh = new Frame.laugh().getPatterns()
-    # flirt = new Frame.flirt().getPatterns()
-    # kiss = new Frame.kiss().getPatterns()
-    # lie = new Frame.lie().getPatterns()
-    # breakup = new Frame.breakup().getPatterns()
-    # verse2
-    #   .addFrame(drink, 1)
-    #   .addFrame(text, 1)
-    #   .addFrame(laugh, 1)
-    #   .addFrame(flirt, 1)
-    #   .addFrame(kiss, 1)
-    #   .addFrame(lie, 1)
-    #   .addFrame(breakup, 1)
+    drink = new Frame.drink().getPatterns()
+    text = new Frame.text().getPatterns()
+    laugh = new Frame.laugh().getPatterns()
+    flirt = new Frame.flirt().getPatterns()
+    kiss = new Frame.kiss().getPatterns()
+    lie = new Frame.lie().getPatterns()
+    breakup = new Frame.breakup().getPatterns()
+    verse2
+      .addFrame(drink, 1000)
+      .addFrame(text, 1000)
+      .addFrame(laugh, 1000)
+      .addFrame(flirt, 1000)
+      .addFrame(kiss, 1000)
+      .addFrame(lie, 1000)
+      .addFrame(breakup, 1000)
     verse2
 
   # Verse 3
