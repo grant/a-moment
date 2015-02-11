@@ -1,6 +1,8 @@
 Frame = require './Frame'
 AnimationSequence = require './AnimationSequence'
 
+defaultFrameDuration = 1000
+
 # A magician with a dream
 Animator =
   # Gets the whole animation sequence
@@ -51,11 +53,11 @@ Animator =
     # Setup sequence
     verse1 = new AnimationSequence()
     verse1
-      .addFrame(moment, 1000)
-      .addFrame(thought, 1000)
-      .addFrame(dream, 1000)
-      .addFrame(wish, 1000)
-      .addFrame(search, 1000)
+      .addFrame(moment, defaultFrameDuration)
+      .addFrame(thought, defaultFrameDuration)
+      .addFrame(dream, defaultFrameDuration)
+      .addFrame(wish, defaultFrameDuration)
+      .addFrame(search, defaultFrameDuration)
     verse1
 
   # Verse 2
@@ -69,29 +71,29 @@ Animator =
     lie = new Frame.lie().getPatterns()
     breakup = new Frame.breakup().getPatterns()
     verse2
-      .addFrame(drink, 1000)
-      .addFrame(text, 1000)
-      .addFrame(laugh, 1000)
-      .addFrame(flirt, 1000)
-      .addFrame(kiss, 1000)
-      .addFrame(lie, 1000)
-      .addFrame(breakup, 1000)
+      .addFrame(drink, defaultFrameDuration)
+      .addFrame(text, defaultFrameDuration)
+      .addFrame(laugh, defaultFrameDuration)
+      .addFrame(flirt, defaultFrameDuration)
+      .addFrame(kiss, defaultFrameDuration)
+      .addFrame(lie, defaultFrameDuration)
+      .addFrame(breakup, defaultFrameDuration)
     verse2
 
   # Verse 3
   _getVerse3: ->
     verse3 = new AnimationSequence()
-    # game = new Frame.game().getPatterns()
-    # success = new Frame.success().getPatterns()
-    # failure = new Frame.failure().getPatterns()
-    # better = new Frame.better().getPatterns()
-    # year = new Frame.year().getPatterns()
-    # verse3
-    #   .addFrame(game, 1)
-    #   .addFrame(success, 1)
-    #   .addFrame(failure, 1)
-    #   .addFrame(better, 1)
-    #   .addFrame(year, 1)
+    game = new Frame.game().getPatterns()
+    success = new Frame.success().getPatterns()
+    failure = new Frame.failure().getPatterns()
+    better = new Frame.better().getPatterns()
+    year = new Frame.year().getPatterns()
+    verse3
+      .addFrame(game, defaultFrameDuration)
+      .addFrame(success, defaultFrameDuration)
+      .addFrame(failure, defaultFrameDuration)
+      .addFrame(better, defaultFrameDuration)
+      .addFrame(year, defaultFrameDuration)
     verse3
 
 module.exports = Animator
