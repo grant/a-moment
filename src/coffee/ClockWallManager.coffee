@@ -65,7 +65,7 @@ class ClockWallManager
 
       animationTime = new Date().getTime() - startTime.getTime()
       pattern = interpolator.getPattern animationTime
-        @setPattern pattern
+      @setPattern pattern
 
     raf tick
 
