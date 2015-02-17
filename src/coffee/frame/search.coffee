@@ -28,7 +28,7 @@ class FrameSearch extends Frame
         """
 
     # A maze.
-    design =
+    map =
     """
     ┌┐┌┐┌┐┌┐┌┐└┘└┘``└┘└
     └┘└┘└┘└┘└┘┌┐````┌┐┌
@@ -40,7 +40,20 @@ class FrameSearch extends Frame
     ```└┘┌┐┌┐┌┐┌┐┌┐┌┐┌┐
     ┐┌┐┌┐└┘└┘└┘└┘└┘└┘└┘
     """
-    hands = ClockWallPatternUtils.toClockWallPattern(design)
+    hands = ClockWallPatternUtils.toClockWallPattern(map)
+
+    # Place pacman in positions (top left)
+    positions = [
+      [3, 2, 'right']
+      [4, 2, 'right']
+      [4, 3, 'down']
+      [4, 4, 'down']
+      [4, 5, 'down']
+      [5, 5, 'right']
+      [6, 5, 'right']
+      [7, 5, 'right']
+      [7, 4, 'up']
+    ]
 
     hands
 
