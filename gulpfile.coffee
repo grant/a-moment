@@ -73,7 +73,7 @@ gulp.task 'build', ->
 gulp.task 'docs', shell.task 'docco ' + src.coffee
 
 gulp.task 'watch', ->
-  gulp.watch src.coffee, ['coffee', 'docs']
+  gulp.watch src.coffee, ['coffee']
   gulp.watch src.stylus, ['stylus']
   gulp.watch src.jade, ['jade']
 

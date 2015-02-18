@@ -63,21 +63,21 @@ Animator =
   # Verse 2
   _getVerse2: ->
     verse2 = new AnimationSequence()
-    drink = new Frame.drink().getPatterns()
-    text = new Frame.text().getPatterns()
-    laugh = new Frame.laugh().getPatterns()
-    flirt = new Frame.flirt().getPatterns()
-    kiss = new Frame.kiss().getPatterns()
-    lie = new Frame.lie().getPatterns()
-    breakup = new Frame.breakup().getPatterns()
-    verse2
-      .addFrame(drink, defaultFrameDuration)
-      .addFrame(text, defaultFrameDuration)
-      .addFrame(laugh, defaultFrameDuration)
-      .addFrame(flirt, defaultFrameDuration)
-      .addFrame(kiss, defaultFrameDuration)
-      .addFrame(lie, defaultFrameDuration)
-      .addFrame(breakup, defaultFrameDuration)
+    # drink = new Frame.drink().getPatterns()
+    # text = new Frame.text().getPatterns()
+    # laugh = new Frame.laugh().getPatterns()
+    # flirt = new Frame.flirt().getPatterns()
+    # kiss = new Frame.kiss().getPatterns()
+    # lie = new Frame.lie().getPatterns()
+    # breakup = new Frame.breakup().getPatterns()
+    # verse2
+    #   .addFrame(drink, defaultFrameDuration)
+    #   .addFrame(text, defaultFrameDuration)
+    #   .addFrame(laugh, defaultFrameDuration)
+    #   .addFrame(flirt, defaultFrameDuration)
+    #   .addFrame(kiss, defaultFrameDuration)
+    #   .addFrame(lie, defaultFrameDuration)
+    #   .addFrame(breakup, defaultFrameDuration)
     verse2
 
   # Verse 3
