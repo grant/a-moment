@@ -116,4 +116,8 @@ HandRotationUtils =
     deg = radians * (180 / Math.PI)
     [deg, (deg + 180) % 360]
 
+  # Clones hand rotations
+  clone: (handRotations) ->
+    return handRotations.slice(0)
+
 module.exports = HandRotationUtils

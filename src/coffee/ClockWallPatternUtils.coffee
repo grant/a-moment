@@ -1,3 +1,4 @@
+CommonClockWallPattern = require './CommonClockWallPattern'
 HandRotationUtils = require './HandRotationUtils'
 
 # Utility functions for clock wall patterns
@@ -69,5 +70,13 @@ ClockWallPatternUtils =
   inverse: (pattern) ->
     ClockWallPatternUtils.rotate pattern, 90
 
+  # Clones a clock wall pattern
+  clone: (pattern) ->
+    newPattern = CommonClockWallPattern.empty(pattern[0].length, pattern.length)
+    for y in [0...pattern.length]
+      for x in [0...pattern[0].length]
+        newPattern[y][x] = HandRotationUtils.clone(pattern[y][x])
+
+    newPattern
 
 module.exports = ClockWallPatternUtils
