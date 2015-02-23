@@ -5,7 +5,7 @@ ClockWallPatternUtils = require '../ClockWallPatternUtils'
 # A 7x7 short maze
 class FrameSearch extends Frame
   getPatterns: ->
-    pacman =
+    pacmanTemplate =
       right:
         """
         ◢◺
@@ -28,7 +28,7 @@ class FrameSearch extends Frame
         """
 
     # A maze.
-    map =
+    mapTemplate =
     """
     ┌┐┌┐┌┐┌┐┌┐└┘└┘``└┘└
     └┘└┘└┘└┘└┘┌┐````┌┐┌
@@ -40,7 +40,7 @@ class FrameSearch extends Frame
     ```└┘┌┐┌┐┌┐┌┐┌┐┌┐┌┐
     ┐┌┐┌┐└┘└┘└┘└┘└┘└┘└┘
     """
-    hands = ClockWallPatternUtils.toClockWallPattern(map)
+    hands = ClockWallPatternUtils.toClockWallPattern(mapTemplate)
 
     # Place pacman in positions (top left)
     positions = [
@@ -54,6 +54,13 @@ class FrameSearch extends Frame
       [7, 5, 'right']
       [7, 4, 'up']
     ]
+
+    mapsWithPositions = []
+    for position in positions
+      [x, y, pos] = position
+      mapClone = ClockWallPatternUtils.clone mapTemplate
+      pacman = pacmanTemplate[pos]
+      mapsWithPositions.push ClockWallPatternUtils.place(mapClone, pacman, 'topleft')
 
     hands
 
