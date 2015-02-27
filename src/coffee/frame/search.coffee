@@ -36,8 +36,8 @@ class FrameSearch extends Frame
     ```````|◸◺┌┐┌┐``┌┐┌
     ┐``┌┐``|``└┘└┘``└┘└
     ┘``└┘`````┌┐┌┐`````
-    ```┌┐`````└┘└┘`````
-    ```└┘┌┐┌┐┌┐┌┐┌┐┌┐┌┐
+    `◢◺┌┐`````└┘└┘`````
+    `◥◿└┘┌┐┌┐┌┐┌┐┌┐┌┐┌┐
     ┐┌┐┌┐└┘└┘└┘└┘└┘└┘└┘
     """
     mapClockWallPattern = ClockWallPatternUtils.toClockWallPattern(mapTemplate)
