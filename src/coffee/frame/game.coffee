@@ -10,7 +10,7 @@ class FrameGame extends Frame
     height = Frame.DEFAULT_HEIGHT
 
     # Background pattern for pong game
-    background = CommonClockWallPattern.horizontal(width, height)
+    background = CommonClockWallPattern.diagonalRight(width, height)
 
     # hands = ClockWallPatternUtils.toClockWallPattern(background)
     hands = background
