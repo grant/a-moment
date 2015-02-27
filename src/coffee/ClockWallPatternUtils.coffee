@@ -61,8 +61,10 @@ ClockWallPatternUtils =
       patternRow = placePattern[y]
       for x in [0...patternRow.length]
         handRotation = placePattern[y][x]
-        if handRotation
-          background[offset.y + y][offset.x + x] = handRotation
+        desY = offset.y + y
+        desX = offset.x + x
+        if handRotation and desY >= 0 and desY < backgroundSize.height and desX >= 0 and desX < backgroundSize.width
+          background[desY][desX] = handRotation
 
     background
 

@@ -83,27 +83,27 @@ Animator =
     # kiss = new Frame.kiss().getPatterns()
     # verse2.addFrame(kiss, defaultFrameDuration)
 
-    lie = new Frame.lie().getPatterns()
-    verse2.addFrame(lie, defaultFrameDuration)
+    # lie = new Frame.lie().getPatterns()
+    # verse2.addFrame(lie, defaultFrameDuration)
 
-    breakupFrames = new Frame.breakup().getPatterns()
-    for frame, i in breakupFrames
-      verse2.addFrame(frame, 4 * defaultFrameDuration / breakupFrames.length)
+    # breakupFrames = new Frame.breakup().getPatterns()
+    # for frame, i in breakupFrames
+    #   verse2.addFrame(frame, 3 * defaultFrameDuration / breakupFrames.length)
 
     verse2
 
   # Verse 3
   _getVerse3: ->
     verse3 = new AnimationSequence()
-    # game = new Frame.game().getPatterns()
-    # success = new Frame.success().getPatterns()
+    game = new Frame.game().getPatterns()
+    success = new Frame.success().getPatterns()
     # failure = new Frame.failure().getPatterns()
     # better = new Frame.better().getPatterns()
     # year = new Frame.year().getPatterns()
-    # verse3
-    #   .addFrame(game, defaultFrameDuration)
-    #   .addFrame(success, defaultFrameDuration)
-    #   .addFrame(failure, defaultFrameDuration)
+    verse3
+      .addFrame(game, defaultFrameDuration)
+      .addFrame(success, defaultFrameDuration)
+      # .addFrame(failure, defaultFrameDuration)
     #   .addFrame(better, defaultFrameDuration)
     #   .addFrame(year, defaultFrameDuration)
     verse3

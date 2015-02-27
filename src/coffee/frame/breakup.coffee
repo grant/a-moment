@@ -54,6 +54,24 @@ class FrameBreakup extends Frame
       | |         | |
       └-┘         └-┘
       """
+    ,
+      """
+      ┌-┐           ┌-┐
+      | |           | |
+      └-┘           └-┘
+      """
+    ,
+      """
+      ┌-┐             ┌-┐
+      | |             | |
+      └-┘             └-┘
+      """
+    ,
+      """
+      ┌-┐               ┌-┐
+      | |               | |
+      └-┘               └-┘
+      """
     ]
     hands = []
     for keyframeObject in keyframeObjects
