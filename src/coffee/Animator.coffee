@@ -43,21 +43,25 @@ Animator =
 
   # Verse 1
   _getVerse1: ->
-    # Get patterns
-    moment = new Frame.moment().getPatterns()
-    thought = new Frame.thought().getPatterns()
-    dream = new Frame.dream().getPatterns()
-    wish = new Frame.wish().getPatterns()
-    search = new Frame.search().getPatterns()
-
     # Setup sequence
     verse1 = new AnimationSequence()
-    verse1
-      .addFrame(moment, defaultFrameDuration)
-      .addFrame(thought, defaultFrameDuration)
-      .addFrame(dream, defaultFrameDuration)
-      .addFrame(wish, defaultFrameDuration)
-      .addFrame(search, defaultFrameDuration)
+
+    # moment = new Frame.moment().getPatterns()
+    # verse1.addFrame(moment, defaultFrameDuration)
+
+    # thought = new Frame.thought().getPatterns()
+    # verse1.addFrame(thought, defaultFrameDuration)
+
+    # dream = new Frame.dream().getPatterns()
+    # verse1.addFrame(dream, defaultFrameDuration)
+
+    # wish = new Frame.wish().getPatterns()
+    # verse1.addFrame(wish, defaultFrameDuration)
+
+    searchFrames = new Frame.search().getPatterns()
+    for frame, i in searchFrames
+      verse1.addFrame(frame, defaultFrameDuration / searchFrames.length)
+
     verse1
 
   # Verse 2

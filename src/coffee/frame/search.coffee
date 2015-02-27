@@ -9,21 +9,21 @@ class FrameSearch extends Frame
       right:
         """
         ◢◺
-        ◥◸
+        ◥◿
         """
       down:
         """
         ◢◣
-        ◹◸
+        ◺◸
         """
       left:
         """
-        ◿◣
+        ◸◣
         ◹◤
         """
       up:
         """
-        ◿◺
+        ◿◹
         ◥◤
         """
 
@@ -40,28 +40,35 @@ class FrameSearch extends Frame
     ```└┘┌┐┌┐┌┐┌┐┌┐┌┐┌┐
     ┐┌┐┌┐└┘└┘└┘└┘└┘└┘└┘
     """
-    hands = ClockWallPatternUtils.toClockWallPattern(mapTemplate)
+    mapClockWallPattern = ClockWallPatternUtils.toClockWallPattern(mapTemplate)
 
     # Place pacman in positions (top left)
     positions = [
       [3, 2, 'right']
       [4, 2, 'right']
-      [4, 3, 'down']
-      [4, 4, 'down']
-      [4, 5, 'down']
-      [5, 5, 'right']
+      [5, 2, 'right']
+      [5, 3, 'down']
+      [5, 4, 'down']
+      [5, 5, 'down']
       [6, 5, 'right']
       [7, 5, 'right']
-      [7, 4, 'up']
+      [8, 5, 'right']
+      [8, 4, 'up']
+      [8, 3, 'up']
+      [8, 2, 'up']
+      [8, 2, 'left']
     ]
 
     mapsWithPositions = []
     for position in positions
       [x, y, pos] = position
-      mapClone = ClockWallPatternUtils.clone mapTemplate
-      pacman = pacmanTemplate[pos]
-      mapsWithPositions.push ClockWallPatternUtils.place(mapClone, pacman, 'topleft')
+      xy =
+        x: x
+        y: y
+      mapClone = ClockWallPatternUtils.clone mapClockWallPattern
+      pacman = ClockWallPatternUtils.toClockWallPattern pacmanTemplate[pos]
+      mapsWithPositions.push ClockWallPatternUtils.place(mapClone, pacman, 'topleft', xy)
 
-    hands
+    mapsWithPositions
 
 module.exports = FrameSearch

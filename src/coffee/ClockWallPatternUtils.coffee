@@ -29,7 +29,7 @@ ClockWallPatternUtils =
 
   # Inserts a clock wall pattern at a specific place in another clock wall pattern
   # Modifies the background and returns it (redundantly)
-  place: (background, placePattern, position) ->
+  place: (background, placePattern, positionType, position) ->
     backgroundSize =
       width: background[0].length
       height: background.length
@@ -39,7 +39,7 @@ ClockWallPatternUtils =
       height: placePattern.length
 
     # Calculate the position offset
-    switch position
+    switch positionType
       when 'center'
         offset =
           x: (backgroundSize.width - placePatternSize.width) / 2
@@ -48,6 +48,13 @@ ClockWallPatternUtils =
         # Assert that these values are okay (whole numbers)
         if offset.x != Math.round(offset.x) or offset.y != Math.round(offset.y)
           throw new Error 'Dimensions of placePattern must be odd (to center properly)'
+      when 'topleft'
+        offset =
+          x: position.x
+          y: position.y
+
+        if placePatternSize.width % 2 != 0 or placePatternSize.height % 2 != 0
+          throw new Error 'Dimensions of placePattern must be even (to place properly)'
 
     # Copy the hand rotations
     for y in [0...placePatternSize.height]
