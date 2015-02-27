@@ -9,10 +9,10 @@ class FrameBreakup extends Frame
     height = Frame.DEFAULT_HEIGHT
 
     # Background pattern
-    hands = CommonClockWallPattern.x(width, height)
+    xPatternTemplate = CommonClockWallPattern.x(width, height)
 
     # Design must have odd dimensions to center properly
-    keyframes = [
+    keyframeObjects = [
       """
       ┌┌┐
       |||
@@ -36,10 +36,30 @@ class FrameBreakup extends Frame
       | |   | |
       └-┘   └-┘
       """
+    ,
+      """
+      ┌-┐     ┌-┐
+      | |     | |
+      └-┘     └-┘
+      """
+    ,
+      """
+      ┌-┐       ┌-┐
+      | |       | |
+      └-┘       └-┘
+      """
+    ,
+      """
+      ┌-┐         ┌-┐
+      | |         | |
+      └-┘         └-┘
+      """
     ]
-    pattern = ClockWallPatternUtils.toClockWallPattern(keyframes[3])
-
-    hands = ClockWallPatternUtils.place(hands, pattern, 'center')
+    hands = []
+    for keyframeObject in keyframeObjects
+      keyframePattern = ClockWallPatternUtils.toClockWallPattern(keyframeObject)
+      xPatternClone = ClockWallPatternUtils.clone xPatternTemplate
+      hands.push ClockWallPatternUtils.place(xPatternClone, keyframePattern, 'center')
 
     hands
 
