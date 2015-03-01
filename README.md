@@ -1,10 +1,10 @@
 # A Moment
 
-A creative project by Grant Timmerman
+A creative project by Grant Timmerman.
 
 [Insert picture here]
 
-Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4) and [this video](https://www.youtube.com/watch?v=XdaKTnqotbE)
+Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4) and [this video](https://www.youtube.com/watch?v=XdaKTnqotbE).
 
 ## Uses
 - :coffee: Coffeescript
