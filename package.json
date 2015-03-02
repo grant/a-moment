@@ -12,7 +12,8 @@
   },
   "keywords": [
     "clock",
-    "wall"
+    "wall",
+    "moment"
   ],
   "author": "Grant Timmerman",
   "license": "MIT",
