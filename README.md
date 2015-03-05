@@ -11,6 +11,7 @@ Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4) and [this 
 - :tropical_fish: Gulp
 - :lipstick: Stylus
 - :gem: Jade
+- :star2: SVGs
 
 ## Install
 
