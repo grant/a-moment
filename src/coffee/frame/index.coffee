@@ -17,3 +17,4 @@ module.exports =
   failure: require './failure'
   better: require './better'
   year: require './year'
+  pong: require './pong'
