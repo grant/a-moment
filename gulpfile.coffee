@@ -42,7 +42,7 @@ task =
     .on('error', (err) -> console.error err.toString())
     .pipe plumber()
     .pipe source dest.js_index
-    .pipe streamify uglify()
+    # .pipe streamify uglify()
     .pipe gulp.dest dest.js
 
   stylus: ->

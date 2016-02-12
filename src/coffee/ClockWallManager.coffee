@@ -45,7 +45,6 @@ class ClockWallManager
     # Get animation sequence
     animationSequence = Animator.getAnimationSequence()
     interpolator = new AnimationSequenceInterpolator animationSequence
-    startTime = new Date
 
     # Setup raf (60 fps)
     tick = =>
@@ -63,9 +62,11 @@ class ClockWallManager
         date.setTime date.getTime() - dateOffset
         analogClock.updateHands(date)
 
-      animationTime = new Date().getTime() - startTime.getTime()
-      pattern = interpolator.getPattern animationTime
-      @setPattern pattern
+      # Only update pattern when started animation
+      if @startTime
+        animationTime = new Date().getTime() - @startTime.getTime()
+        pattern = interpolator.getPattern animationTime
+        @setPattern pattern
 
     raf tick
 

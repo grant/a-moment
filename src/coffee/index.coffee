@@ -27,20 +27,21 @@ $ ->
         scale = startScale - (startScale - endScale) * timeRatio
         $(this).css('transform', 'scale(' + scale + ')')
       complete: ->
+        clockWallManager.startTime = new Date
         $(this).css('transform', 'scale(' + endScale + ')')
 
   # Setup start configuration
   setup = ->
     # Hide all clocks besides the center one
-    # $('.clock').addClass('hide')
-    # middleIndex = Math.ceil((numClocksWide * numClocksTall) / 2)
-    # $('.clock:nth-child(' + middleIndex + ')').addClass('middle-clock').removeClass('hide')
+    $('.clock').addClass('hide')
+    middleIndex = Math.ceil((numClocksWide * numClocksTall) / 2)
+    $('.clock:nth-child(' + middleIndex + ')').addClass('middle-clock').removeClass('hide')
 
-    # # Start with one clock (1x1), go to 7x7, then 15x9
-    # $clockWall.css('transform', 'scale(5)')
+    # Start with one clock (1x1), go to 7x7, then 15x9
+    $clockWall.css('transform', 'scale(5)')
 
-    # $('.start.button').click ->
-    #   $('.start.button').addClass 'hide'
-    #   start()
+    $('.start.button').click ->
+      $('.start.button').addClass 'hide'
+      start()
 
   setup()

@@ -1,4 +1,5 @@
 Clock = require './Clock'
+$ = require 'jquery'
 
 # Constants
 # (percentage of whole clock)

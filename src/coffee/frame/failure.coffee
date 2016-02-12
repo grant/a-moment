@@ -18,6 +18,7 @@ class FrameFailure extends Frame
         ◥-◤
          ⌵
     """
+    hands = ClockWallPatternUtils.toClockWallPattern(arrowDesign)
 
     # Animate the arrow down
 
