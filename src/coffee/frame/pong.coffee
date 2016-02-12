@@ -1,4 +1,4 @@
-ClockWallPatternUtils = require '../../ClockWallPatternUtils'
+ClockWallPatternUtils = require '../ClockWallPatternUtils'
 
 # Patterns for a pong game
 
