@@ -3,6 +3,8 @@ var $, ClockWallManager;
 
 $ = require('jquery');
 
+require('./twitter');
+
 ClockWallManager = require('./ClockWallManager');
 
 $(function() {
@@ -54,7 +56,7 @@ $(function() {
 
 
 
-},{"./ClockWallManager":16,"jquery":3}],2:[function(require,module,exports){
+},{"./ClockWallManager":16,"./twitter":40,"jquery":3}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -11560,4 +11562,26 @@ module.exports = TimeClockWallPattern;
 
 
 
-},{"./CommonClockWallPattern":18,"./NumberClockWallPattern":38}]},{},[1]);
+},{"./CommonClockWallPattern":18,"./NumberClockWallPattern":38}],40:[function(require,module,exports){
+window.twttr = (function(d, s, id) {
+  var fjs, js, t;
+  js = void 0;
+  fjs = d.getElementsByTagName(s)[0];
+  t = window.twttr || {};
+  if (d.getElementById(id)) {
+    return t;
+  }
+  js = d.createElement(s);
+  js.id = id;
+  js.src = 'https://platform.twitter.com/widgets.js';
+  fjs.parentNode.insertBefore(js, fjs);
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+  return t;
+})(document, 'script', 'twitter-wjs');
+
+
+
+},{}]},{},[1]);
