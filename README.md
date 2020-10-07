@@ -17,10 +17,18 @@ Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4) and [this 
 
 ```sh
 git clone git@github.com:grant/a-moment.git
+npm install --global gulp-cli
+sudo n 10
 npm install
 gulp build
 python -m SimpleHTTPServer 8000
 open http://localhost:8000
+```
+
+Develop:
+
+```
+gulp build && python -m SimpleHTTPServer 8000
 ```
 
 ## Gulp

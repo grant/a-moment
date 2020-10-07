@@ -15,7 +15,8 @@ FADE_OUT_DURATION = 300 # ms
 
 # An analog clock that shows the time using the second, minute, and hour hand
 class AnalogClock extends Clock
-  constructor: (@$el) ->
+  constructor: ($el) ->
+    this.$el = $el
     @$secondHand = $el.find '.second.hand'
     @$secondHandLine = @$secondHand.find '.line'
     @$frontDot = $el.find '.front.dot'
@@ -26,7 +27,7 @@ class AnalogClock extends Clock
     @$frontDot.attr 'r', SECOND_HAND_DOT_SIZE + '%'
     @$backDot.attr 'r', SECOND_HAND_DOT_SIZE + '%'
 
-    super(@$el)
+    super($el)
 
     @$hourHand.attr
       'stroke-linecap': 'round'
@@ -96,7 +97,7 @@ class AnalogClock extends Clock
 
   # Removes the second hand from the clock
   removeSecondHand: ->
-    @$el.find('.hole').fadeOut FADE_OUT_DURATION
+    this.$el.find('.hole').fadeOut FADE_OUT_DURATION
     @$secondHand.fadeOut FADE_OUT_DURATION, ->
       $(this).remove()
 

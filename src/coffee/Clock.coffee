@@ -8,7 +8,7 @@ CLOCK_MARGIN = 5
 # A single clock element
 class Clock
 
-  constructor: (@$el) ->
+  constructor: ($el) ->
     @$hourHand = $el.find '.hour.hand'
     @$minuteHand = $el.find '.minute.hand'
 

@@ -102,11 +102,11 @@ Animator =
     # better = new Frame.better().getPatterns()
     # year = new Frame.year().getPatterns()
     # verse3
-      # .addFrame(game, defaultFrameDuration)
-      # .addFrame(success, defaultFrameDuration)
-      # .addFrame(failure, defaultFrameDuration)
+    #   .addFrame(game, defaultFrameDuration)
+    #   .addFrame(success, defaultFrameDuration)
+    #   .addFrame(failure, defaultFrameDuration)
     #   .addFrame(better, defaultFrameDuration)
     #   .addFrame(year, defaultFrameDuration)
-    verse3
+    # verse3
 
 module.exports = Animator

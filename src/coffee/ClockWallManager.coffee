@@ -28,7 +28,7 @@ MODE =
 # The manager for the clock wall.
 # Manages the current state of the clocks and the queue of next clock patterns.
 class ClockWallManager
-  constructor: (@numClocksWide, @numClocksTall) ->
+  constructor: (numClocksWide, numClocksTall) ->
     self = @
     @mode = MODE.HOME
 
