@@ -1,6 +1,11 @@
 # A Moment
 
-A creative project by Grant Timmerman.
+<p align="center">
+  A creative project by Grant Timmerman
+  <br>
+  --&gt; <a href="grant.github.io/a-moment">grant.github.io/a-moment</a> &lt;--
+</p>
+
 
 ![Screen Shot 2020-10-06 at 21 46 53](https://user-images.githubusercontent.com/744973/95281892-d4ab4500-081d-11eb-96dc-f59af8fc500d.png)
 
