@@ -2,9 +2,11 @@
 
 A creative project by Grant Timmerman.
 
-[Insert picture here]
+![Screen Shot 2020-10-06 at 21 46 53](https://user-images.githubusercontent.com/744973/95281892-d4ab4500-081d-11eb-96dc-f59af8fc500d.png)
 
 Inspired by [this video](https://www.youtube.com/watch?v=FNxiFOUKpZ4) and [this video](https://www.youtube.com/watch?v=XdaKTnqotbE).
+
+> Note: The JS ecosystem has updated a lot since 2015. The current build is broken, and there's a semi-working build here: https://github.com/grant/a-moment/tree/grant_2020
 
 ## Uses
 - :coffee: Coffeescript
